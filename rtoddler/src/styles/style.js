@@ -1,11 +1,5 @@
 import { StyleSheet } from 'react-native';
-// import { darkerBlue, graniteGray } from '../../styles/colors';
-
-const graniteGray = '#615D6C';
-// const pariwinkle = '#CAE5FF';
-// const freshAir = '#ACEDFF';
-// const jordyBlue = '#89BBFE';
-const darkerBlue = '#42638E';
+import { darkerBlue, graniteGray } from './colors';
 
 export default StyleSheet.create({
   container: {
@@ -28,5 +22,8 @@ export default StyleSheet.create({
     borderColor: 'white',
     borderWidth: 2,
     backgroundColor: graniteGray,
+  },
+  buttonText: {
+    color: 'white',
   }
 });
