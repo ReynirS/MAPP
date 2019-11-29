@@ -51,7 +51,7 @@ class Gallery extends React.Component {
     // console.log(this.state.selectedBoards);
     const { selectedBoards, boards, isAddModalOpen } = this.state;
     return (
-      <View style={{flex: 1}}>
+      <View style={{flex: 1, backgroundColor: '#615D6C'}}>
         <Toolbar
           hasSelectedBoards={ selectedBoards.length > 0 }
           onAdd={ () => this.setState({ isAddModalOpen: true }) }
