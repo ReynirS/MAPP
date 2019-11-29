@@ -18,4 +18,8 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     padding: 40,
   },
+  divider: {
+    marginTop: 10,
+    marginBottom: 10
+  }
 });

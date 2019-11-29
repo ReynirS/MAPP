@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import Toolbar from '../../components/Toolbar';
 import BoardList from '../../components/BoardList';
 import AddModal from '../../components/AddModal';
+import { selectFromCameraRoll } from '../../services/boardService';
 import data from '../../resources/data.json';
 
 class Gallery extends React.Component {
@@ -41,12 +42,29 @@ class Gallery extends React.Component {
       marginBottom: 5,
     }}>{selectedBoards.length} {itemCaption} selected</Text>
   }
-  takePhoto(){
-
+  async selectFromCameraRoll(){
+    const photo = await selectFromCameraRoll();
+    if(photo.length > 0){
+      await this.selectFromCameraRoll(photo);
+    }
   }
-  selectFromCameraRoll(){
-
+  async addBoard(){
+    // const newBoard =
+    const { boards } = this.state;
+    this.setSate({
+      boards: [ ...boards, newBoard ],
+      isAddModalOpen: false,
+    });
   }
+  deleteSelectedBoards(){
+    const { selectedBoards, boards } = this.state;
+    this.setSate({
+      boards: boards.filter(board => selectedBoards.indexOf(board.id) === -1),
+      // images: images.filter(image => selectedImages.indexOf(image.name) === -1)
+      selectedBoards: [],
+    });
+  }
+
   render() {
     // console.log(this.state.selectedBoards);
     const { selectedBoards, boards, isAddModalOpen } = this.state;
@@ -55,7 +73,7 @@ class Gallery extends React.Component {
         <Toolbar
           hasSelectedBoards={ selectedBoards.length > 0 }
           onAdd={ () => this.setState({ isAddModalOpen: true }) }
-          onRemove={ () => {} } />
+          onRemove={ () => this.deleteSelectedBoards() } />
         {this.displayCaption()}
         <BoardList
           boards={boards}
@@ -69,6 +87,7 @@ class Gallery extends React.Component {
       </View>
     )
   }
+
 }
 
 export default Gallery;
