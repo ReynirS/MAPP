@@ -3,6 +3,7 @@ import { View, Text, FlatList} from 'react-native';
 import {loadId, filterListsId} from '../../services/idServices';
 import data from '../../resources/data.json';
 import ListList from '../../components/ListList'
+import ListToolbar from '../../components/ListToolbar';
 
 class Lists extends React.Component {
   state = {
@@ -25,7 +26,8 @@ class Lists extends React.Component {
     }
     else{
       return(
-        <View>
+        <View style={{flex: 1, backgroundColor: '#615D6C'}}>
+          <ListToolbar/>
           <ListList
             bid={this.state.currentId}
             data={this.state.currentList} />

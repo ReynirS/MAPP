@@ -1,15 +1,15 @@
-import { StyleSheet } from 'react-native';
-import {darkerBlue, graniteGray, darkerGray } from '../../styles/colors';
+import {StyleSheet} from 'react-native';
+import {graniteGray, darkerGray} from '../../styles/colors';
 
 export default StyleSheet.create({
-  toolbar: {
+  listToolbar: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     height: 80,
     backgroundColor: graniteGray,
   },
-  toolbarAction: {
+  listToolbarAction: {
     flex: 1,
     alignItems: 'center',
     borderWidth: 1,
@@ -20,10 +20,10 @@ export default StyleSheet.create({
     margin: 10,
     backgroundColor: darkerGray
   },
-  toolbarActionText: {
+  listToolbarActionText: {
     fontWeight: 'bold',
     color: 'white',
     fontSize: 16,
     fontFamily: 'opensans_bold'
-  },
-});
+  }
+})

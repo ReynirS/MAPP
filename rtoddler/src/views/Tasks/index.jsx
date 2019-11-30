@@ -3,6 +3,7 @@ import {View, Text, FlatList} from 'react-native';
 import data from '../../resources/data.json';
 import {loadId, filterTasksId} from '../../services/idServices';
 import TaskList from '../../components/TaskList';
+import TaskToolbar from '../../components/TaskToolbar';
 
 class Tasks extends React.Component {
     state= {
@@ -19,14 +20,17 @@ class Tasks extends React.Component {
       if(this.state.currentId==''){
         return(
           <View>
-            <Text>Missed it hun</Text>
+            <Text>Something went wrong :/</Text>
           </View>
         );
       }
       else{
         return(
-          <View>
-            <TaskList lid={this.state.currentId} data={this.state.currentList}/>
+          <View style={{flex: 1, backgroundColor: '#615D6C'}}>
+            <TaskToolbar/>
+            <TaskList
+            lid={this.state.currentId}
+            data={this.state.currentList}/>
           </View>
         );
       }
