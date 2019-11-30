@@ -3,6 +3,7 @@ import { View, Text } from 'react-native';
 import Toolbar from '../../components/Toolbar';
 import BoardList from '../../components/BoardList';
 import AddModal from '../../components/AddModal';
+import {takePhoto} from '../../services/imageService';
 import data from '../../resources/data.json';
 
 class Gallery extends React.Component {
@@ -41,8 +42,8 @@ class Gallery extends React.Component {
       marginBottom: 5,
     }}>{selectedBoards.length} {itemCaption} selected</Text>
   }
-  takePhoto(){
-
+  async takePhoto(){
+    const photo = await takePhoto();
   }
   selectFromCameraRoll(){
 

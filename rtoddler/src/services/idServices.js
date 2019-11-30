@@ -13,3 +13,13 @@ const onException = (cb, errorHandler) => {
 export const loadId = async id => {
   return await onException(() => id);
 }
+
+
+export const filterListsId = async (boardId, data) => {
+  return await onException(() => data.filter(element => element.boardId === boardId));
+}
+
+
+export const filterTasksId = async (boardId, data) => {
+  return await onException(() => data.filter(element => element.listId === boardId));
+}
