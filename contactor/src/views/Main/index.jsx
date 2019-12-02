@@ -7,7 +7,7 @@ class Main extends React.Component {
   render(){
     return(
       <ContactList
-      contacts={data.contacts}
+      contacts={data.contacts.sort((a, b) => (a.name > b.name) ? 1 : -1)}
       />
     )
   }
