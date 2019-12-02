@@ -15,7 +15,7 @@ class Contact extends React.Component{
 
   render(){
     if(this.state.currentname === ''){
-      retur(
+      return(
         <View>
           <Text>Something went wrong</Text>
         </View>
