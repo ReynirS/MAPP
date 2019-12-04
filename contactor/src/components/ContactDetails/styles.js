@@ -8,17 +8,17 @@ export default StyleSheet.create ({
   avatar: {
     marginTop: 50,
   },
-  button: {
-    marginTop: 60,
-    padding: 20,
-    borderRadius: 10,
-    backgroundColor: 'white'
-  },
   text: {
     marginTop: 40,
     color: 'white',
     fontWeight: 'bold',
     fontSize: 16,
+  },
+  button: {
+    marginTop: 60,
+    padding: 20,
+    borderRadius: 10,
+    backgroundColor: 'lightgray'
   },
   buttonText: {
     fontWeight: 'bold',
