@@ -5,7 +5,7 @@ import styles from './styles.js';
 
 const Toolbar = ({onAdd, onRemove}) => (
   <View styleName="horizontal" style={styles.toolbar}>
-    <TouchableOpacity style={styles.addIcon}>
+    <TouchableOpacity onPress={ onAdd } style={styles.addIcon}>
       <Image
       style={styles.image}
       source={require('../../resources/noun_Plus_2875.png')}
