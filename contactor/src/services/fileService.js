@@ -20,13 +20,14 @@ export const writeContact = async (contact, location) => {
 const validNameMaker = name => {
   const cleanSpecialCharacters = name.replace(/[^A-Za-z0-9\s-]/g, "");
   const cleanSpaces = cleanSpecialCharacters.replace(/\s/g, '-');
+  if(cleanSpaces === ''){
+    return 'Empty-Name';
+  }
   return cleanSpaces;
 }
 
 export const addContact = async contact => {
   const contactName = validNameMaker(contact.name);
-  /*const names = contact.name.split(' ');
-  const contactName = names[0];*/
   const cJSON = JSON.stringify(contact);
   await onException(() => writeContact(cJSON, `${contactDirectory}/${contactName}`));
 }
@@ -56,6 +57,7 @@ export const getAllContacts = async () => {
   const result = await onException(()=> FileSystem.readDirectoryAsync(contactDirectory));
   return Promise.all(result.map(async name => {
     const contact = await loadContact(name);
+    //console.log(contact);
     const contactJSON = JSON.parse(contact);
     return {
       "name": contactJSON.name,
