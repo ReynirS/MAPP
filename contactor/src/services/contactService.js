@@ -6,22 +6,41 @@ const getPermissions = async permissionsTypes => (
   await Promise.all(permissionsTypes.map(async type => await Permission.askAsync(type)))
 );
 
-export const loadContacts = async () => {
+const loadContacts = async () => {
   await getPermissions([Permission.CONTACTS]);
-  const result = await Contacts.getContactsAsync();
-  const dicks = [];
-  result.data.forEach(element => {
-    if(typeof element.phoneNumbers !== 'undefined'){
-      const cont = {
-        "name": element.name,
-        "number": element.phoneNumbers[0].number
-      };
-      dicks.push(cont);
-    }
-  });
-  console.log(dicks);
-  //const names = result.data.filter(object => object.firstName);
-  //const names = result.filter(object => object.firstName > 4);
+  const allContacts = await Contacts.getContactsAsync();
+  return allContacts;
+}
 
-  //console.log(names);
+const variableChecker = variable =>{
+  if(typeof variable === 'undefined'){
+    return 'NaN';
+  }
+  else{
+    return variable;
+  }
+}
+
+export const filterContacts = async () => {
+  const allContacts = await loadContacts();
+  const filtered = [];
+  allContacts.data.forEach(element => {
+      var numberChecker = true;
+      var imageUri = 'No Image';
+      var number = 'No Number';
+      if(typeof element.phoneNumbers !== 'undefined'){
+        number = element.phoneNumbers[0].number;
+      }
+      const name = variableChecker(element.name);
+      if(element.imageAvailable === true){
+        imageUri = element.image.uri;
+      }
+      const con = {
+        "name": name,
+        "number": number,
+        "image": imageUri
+      };
+      filtered.push(con);
+  });
+  return filtered;
 }
