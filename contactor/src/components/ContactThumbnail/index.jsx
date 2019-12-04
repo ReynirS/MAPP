@@ -9,6 +9,7 @@ const ContactThumbnail = ({name, number, image, navigation: {navigate}, }) => (
     onPress={() =>navigate('Contact', {name, number, image})}>
     <View>
         <ListItem
+          containerStyle={{backgroundColor: 'lightgray'}}
           leftAvatar={{source: {uri: image}}}
           title={name}
           bottomDivider
