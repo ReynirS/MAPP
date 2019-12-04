@@ -27,7 +27,9 @@ async getContacts(){
 
 updateSearch = search => {
   this.setState({ search });
-  const displayContacts = data.contacts.filter(o => Object.keys(o).some(k => o[k].toLowerCase().includes(search.toLowerCase())));
+  const displayContactsNames = data.contacts.filter(o => o.name.toLowerCase().includes(search.toLowerCase()));
+  const displayContactsNumbers = data.contacts.filter(o => o.number.toLowerCase().includes(search.toLowerCase()));
+  const displayContacts = [ ...displayContactsNames, ...displayContactsNumbers];
   this.setState({ displayContacts });
 };
 
