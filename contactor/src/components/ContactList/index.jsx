@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, FlatList, Text, Image} from 'react-native';
 import ContactThumbnail from '../ContactThumbnail';
+import { ListItem } from 'react-native-elements';
 
 const ContactList = ({ contacts }) => (
   <View style={{flex: 1}}>
