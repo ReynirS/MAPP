@@ -5,6 +5,9 @@ import styles from './styles.js';
 
 const Toolbar = ({onAdd, onRemove}) => (
   <View styleName="horizontal" style={styles.toolbar}>
+    <TouchableOpacity onPress={() => {}} style={styles.importContacts}>
+      <Text style={styles.importText}>Import Contacts</Text>
+    </TouchableOpacity>
     <TouchableOpacity onPress={ onAdd } style={styles.addIcon}>
       <Image
       style={styles.image}
