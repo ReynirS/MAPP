@@ -6,8 +6,8 @@ import styles from './styles';
 const Modal = ({ isOpen, closeModal, title, children }) => (
   <NativeModal
     isVisible={ isOpen }
-    onSwipeComplete={closeModal}
     hasBackdrop
+    onSwipeComplete={closeModal}
     onBackButtonPress={ closeModal }
     swipeDirection={ ['up', 'down'] }
     style={styles.modal}
