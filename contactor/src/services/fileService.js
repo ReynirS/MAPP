@@ -17,19 +17,30 @@ export const writeContact = async (contact, location) => {
   return await onException(() => FileSystem.writeAsStringAsync(location, contact));
 }
 
-const validNameMaker = name => {
+const randomNameGenerator = number => {
+  var numStr = number.toString();
+	var cleanSpaces = numStr.replace(/\s/s, '');
+	var nameArr = [];
+	for(var i = 0; i < cleanSpaces.length; i++){
+	nameArr.push(String.fromCharCode(97+parseInt(cleanSpaces[i])));
+	}
+	var name = nameArr.toString().replace(/,/g, '');
+	return name;
+}
+
+const validNameMaker = (name, number) => {
   const cleanSpecialCharacters = name.replace(/[^A-Za-z0-9\s-]/g, "");
-  const cleanSpaces = cleanSpecialCharacters.replace(/\s/g, '-');
+  var cleanSpaces = cleanSpecialCharacters.replace(/\s/g, '-');
   if(cleanSpaces === ''){
-    return 'Empty-Name';
+    cleanSpaces = randomNameGenerator(number);
   }
   return cleanSpaces;
 }
 
 export const addContact = async contact => {
-  const contactName = validNameMaker(contact.name);
+  const contactName = validNameMaker(contact.name, contact.number);
   const cJSON = JSON.stringify(contact);
-  await onException(() => writeContact(cJSON, `${contactDirectory}/${contactName}`));
+  await onException(() => writeContact(cJSON, `${contactDirectory}/${contactName}.json`));
 }
 
 const setupDirectory = async () =>{
@@ -52,12 +63,11 @@ export const loadContact = async contactName =>{
 }
 
 export const getAllContacts = async () => {
-  //await setupDirectory();
+  await setupDirectory();
 
   const result = await onException(()=> FileSystem.readDirectoryAsync(contactDirectory));
   return Promise.all(result.map(async name => {
     const contact = await loadContact(name);
-    //console.log(contact);
     const contactJSON = JSON.parse(contact);
     return {
       "name": contactJSON.name,
