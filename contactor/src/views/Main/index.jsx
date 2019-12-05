@@ -41,7 +41,10 @@ async uploadContacts(){
 updateSearch = search => {
   const data = this.state.allContacts;
   this.setState({ search });
-  const searchContacts = data.filter(o => Object.keys(o).some(k => o[k].toLowerCase().includes(search.toLowerCase())));
+  const searchContactsNames = data.filter(o => o.name.toLowerCase().includes(search.toLowerCase()));
+  const searchContactsNumbers = data.filter(o => o.number.includes(search));
+  const searchContactsConcat = [ ...searchContactsNames, ...searchContactsNumbers];
+  const searchContacts = [ ...new Set(searchContactsConcat)];
   this.setState({ searchContacts });
 };
 
