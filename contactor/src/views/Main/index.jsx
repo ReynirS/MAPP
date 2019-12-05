@@ -49,11 +49,12 @@ async addContact(currentName, currentNumber){
     "number": currentNumber,
     "image": "No Image",
   };
-  console.log(retVal);
   await addContact(retVal);
+  const allContacts = [ ...this.state.allContacts, retVal ];
   const searchContacts = [ ...this.state.searchContacts, retVal ];
+  allContacts.sort((a, b) => (a.name > b.name) ? 1 : -1);
   searchContacts.sort((a, b) => (a.name > b.name) ? 1 : -1);
-  this.setState({searchContacts});
+  this.setState({allContacts, searchContacts});
   this.setState({ isAddModalOpen: false});
 }
 
