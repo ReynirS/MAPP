@@ -9,17 +9,17 @@ const getPermissions = async permissionsTypes => (
 export const loadContacts = async () => {
   await getPermissions([Permission.CONTACTS]);
   const result = await Contacts.getContactsAsync();
-  const dicks = [];
+  const contact = [];
   result.data.forEach(element => {
     if(typeof element.phoneNumbers !== 'undefined'){
       const cont = {
         "name": element.name,
         "number": element.phoneNumbers[0].number
       };
-      dicks.push(cont);
+      contact.push(cont);
     }
   });
-  console.log(dicks);
+  // console.log(contact);
   //const names = result.data.filter(object => object.firstName);
   //const names = result.filter(object => object.firstName > 4);
 
