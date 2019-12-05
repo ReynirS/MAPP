@@ -22,6 +22,11 @@ async componentDidMount() {
   await this.uploadContacts();
   await this._fetchItems();
 }
+
+async setModalToFalse(){
+  this.setState({isAddModalOpen: false});
+}
+
 async _fetchItems() {
   const loadedCon = await getAllContacts();
   const allContacts = loadedCon.sort((a, b) => (a.name > b.name) ? 1 : -1);
@@ -38,6 +43,21 @@ async uploadContacts(){
   await loadImportedContacts();
 }
 
+async addContact(currentName, currentNumber){
+  const retVal = {
+    "name": currentName,
+    "number": currentNumber,
+    "image": "No Image",
+  };
+  await addContact(retVal);
+  const allContacts = [ ...this.state.allContacts, retVal ];
+  const searchContacts = [ ...this.state.searchContacts, retVal ];
+  allContacts.sort((a, b) => (a.name > b.name) ? 1 : -1);
+  searchContacts.sort((a, b) => (a.name > b.name) ? 1 : -1);
+  this.setState({allContacts, searchContacts});
+  this.setState({ isAddModalOpen: false});
+}
+
 updateSearch = search => {
   const data = this.state.allContacts;
   this.setState({ search });
@@ -50,7 +70,7 @@ updateSearch = search => {
 
 
   render(){
-    const { search, isAddModalOpen, allContacts, searchContacts } = this.state;
+    const { search, allContacts, searchContacts } = this.state;
     return(
       <View style={{flex: 1}}>
       <Toolbar onAdd={ () => this.setState({ isAddModalOpen: true }) } />
@@ -63,8 +83,9 @@ updateSearch = search => {
           contacts={searchContacts}
         />
         <AddModal
-          isOpen={ isAddModalOpen }
-          closeModal={() => this.setState({ isAddModalOpen: false})}
+          isOpen={ this.state.isAddModalOpen }
+          closeModal={ () => this.setState({isAddModalOpen: false})}
+          addContact={(currentName, currentNumber) => this.addContact(currentName, currentNumber)}
         />
       </View>
     );
