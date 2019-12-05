@@ -14,15 +14,17 @@ export default StyleSheet.create ({
     marginTop: 40,
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 20,
+    fontSize: 16,
   },
   button: {
-    marginTop: 60,
     padding: 20,
     borderRadius: 10,
     backgroundColor: 'gray',
     borderWidth: 1,
     borderColor: 'white',
+  },
+  lowerText: {
+    marginBottom: 60,
   },
   buttonText: {
     color: 'white',
