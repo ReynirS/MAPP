@@ -19,7 +19,7 @@ export const loadContacts = async () => {
       dicks.push(cont);
     }
   });
-  console.log(dicks);
+  //console.log(dicks);
   //const names = result.data.filter(object => object.firstName);
   //const names = result.filter(object => object.firstName > 4);
 
