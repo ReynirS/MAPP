@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, Image, Dimensions, TouchableOpacity } from 'react-native';
 import { Avatar } from 'react-native-elements';
+import Communications from 'react-native-communications';
 import styles from './styles';
 
 const {width} = Dimensions.get('window')
@@ -15,8 +16,8 @@ const ContactDetails = ({contactName, contactNumber, contactImage}) => (
       onPress={() => console.log("You just clicked the Avatar")}
     />
     <Text style={styles.text}>{contactName}</Text>
-    <Text style={styles.text}>{contactNumber}</Text>
-    <TouchableOpacity>
+    <Text style={[styles.text, styles.lowerText]}>{contactNumber}</Text>
+    <TouchableOpacity onPress={() => Communications.phonecall(contactNumber, true)}>
       <View style={styles.button}>
         <Text style={styles.buttonText}>Call me?</Text>
       </View>

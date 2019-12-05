@@ -7,7 +7,7 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     height: 60,
-    backgroundColor:'#4934EB',
+    backgroundColor:'#615D6C',
     // borderBottomWidth: 1,
   },
   toolbarAction: {
