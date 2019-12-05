@@ -3,7 +3,7 @@ import {View, TouchableOpacity, Text, Image, Alert } from 'react-native';
 import styles from './styles.js';
 
 
-const Toolbar = ({onAdd, onRemove}) => (
+const Toolbar = ({onAdd}) => (
   <View styleName="horizontal" style={styles.toolbar}>
     <TouchableOpacity onPress={ onAdd } style={styles.addIcon}>
       <Image
