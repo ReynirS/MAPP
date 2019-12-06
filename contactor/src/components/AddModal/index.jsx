@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, TextInput, Button } from 'react-native';
+import { TouchableOpacity, Text, TextInput, Button, Image } from 'react-native';
 import Modal from '../Modal';
 import styles from './styles';
 
@@ -7,6 +7,7 @@ class AddModal extends React.Component {
   state ={
     currentName: '',
     currentNumber: '',
+    currentImageUri: '',
   }
   updateCurrentName(currentName){
     this.setState({currentName});
@@ -14,12 +15,15 @@ class AddModal extends React.Component {
   updateCurrentNumber(currentNumber){
     this.setState({currentNumber});
   }
-  clearValues(){
-    this.setState({currentName: '', currentNumber: ''});
+  async updateCurrentImageUri(currentImageUri){
+    this.setState({currentImageUri});
   }
-
+  clearValues(){
+    this.setState({currentName: '', currentNumber: '', currentImageUri: ''});
+  }
   render() {
-    const { isOpen, closeModal, addContact, modalTitle} = this.props;
+    const { isOpen, closeModal, addContact, takePhoto, chooseFromCameraRoll, modalTitle} = this.props;
+    //console.log(this.state.currentImageUri);
     return (
       <Modal
         isOpen={isOpen}
@@ -41,8 +45,26 @@ class AddModal extends React.Component {
           style={styles.numberInput}
         />
         <TouchableOpacity
+          onPress={async () => {
+            const uri = await takePhoto();
+            this.updateCurrentImageUri(uri);
+          }}
+          style={styles.button}
+        >
+          <Text>Take photo</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={async () => {
+            const currentImageUri = await chooseFromCameraRoll();
+            this.setState({currentImageUri});
+          }}
+          style={styles.button}
+        >
+          <Text>Choose from Camera!</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
           onPress={() => {
-            addContact(this.state.currentName, this.state.currentNumber);
+            addContact(this.state.currentName, this.state.currentNumber, this.state.currentImageUri);
             this.clearValues();
           }}
           style={styles.button} >
