@@ -6,7 +6,7 @@ import styles from './styles';
 
 const {width} = Dimensions.get('window')
 
-const ContactDetails = ({contactName, contactNumber, contactImage}) => (
+const ContactDetails = ({contactName, contactNumber, contactImage, onEdit}) => (
   <View style={styles.contact}>
     <Avatar
       containerStyle={styles.avatar}
@@ -16,7 +16,7 @@ const ContactDetails = ({contactName, contactNumber, contactImage}) => (
       onPress={() => console.log("You just clicked the Avatar")}
       showEditButton={true}
       showEditButtonStyle={{width: 5, height: 5}}
-      onEditPress={() => console.log("You just clicked the edit button!")}
+      onEditPress={ onEdit }
     />
     <Text style={styles.text}>{contactName}</Text>
     <Text style={[styles.text, styles.lowerText]}>{contactNumber}</Text>

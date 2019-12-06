@@ -22,32 +22,32 @@ class AddModal extends React.Component {
     const { isOpen, closeModal, addContact} = this.props;
     return (
       <Modal
-      isOpen={isOpen}
-      closeModal={closeModal}>
-      <Text style={styles.header}>Create a contact:</Text>
-      <TextInput
-      placeholder={"Name"}
-      placeholderTextColor='lightgray'
-      value={this.state.currentName}
-      onChangeText={text => this.updateCurrentName(text)}
-      style={styles.nameInput}
-      />
-      <TextInput
-      placeholder={"Number"}
-      placeholderTextColor='lightgray'
-      value={this.state.currentNumber}
-      onChangeText={text => this.updateCurrentNumber(text)}
-      keyboardType={'numeric'}
-      style={styles.numberInput}
-      />
-      <Button
-      title={"Submit"}
-      onPress={() => {
-        addContact(this.state.currentName, this.state.currentNumber);
-        this.clearValues();
-      }}
-      style={styles.button}
-      />
+        isOpen={isOpen}
+        closeModal={closeModal}>
+        <Text style={styles.header}>Create a contact:</Text>
+        <TextInput
+          placeholder={"Name"}
+          placeholderTextColor='lightgray'
+          value={this.state.currentName}
+          onChangeText={text => this.updateCurrentName(text)}
+          style={styles.nameInput}
+        />
+        <TextInput
+          placeholder={"Number"}
+          placeholderTextColor='lightgray'
+          value={this.state.currentNumber}
+          onChangeText={text => this.updateCurrentNumber(text)}
+          keyboardType={'numeric'}
+          style={styles.numberInput}
+        />
+        <Button
+          title={"Submit"}
+          onPress={() => {
+            addContact(this.state.currentName, this.state.currentNumber);
+            this.clearValues();
+          }}
+          style={styles.button}
+        />
       </Modal>
     );
   }
