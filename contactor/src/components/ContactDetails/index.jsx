@@ -15,7 +15,7 @@ const ContactDetails = ({contactName, contactNumber, contactImage}) => (
       source={{uri: contactImage}}
       onPress={() => console.log("You just clicked the Avatar")}
       showEditButton={true}
-      showEditButtonStyle={{width: 5, height: 5}}
+      editButton={{size: 40}}
       onEditPress={() => console.log("You just clicked the edit button!")}
     />
     <Text style={styles.text}>{contactName}</Text>
