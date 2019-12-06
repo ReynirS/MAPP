@@ -15,7 +15,11 @@ class Contact extends React.Component{
   }
 
   async editContact(currentName, currentNumber) {
-    console.log("Log from editContact");
+    this.setState({ currentName: currentName });
+    this.setState({ currentNumber: currentNumber });
+    this.setState({ isEditModalOpen: false });
+
+    //TODO delete old JSON, make new JSON 
   }
 
   async componentDidMount(){
@@ -47,6 +51,7 @@ class Contact extends React.Component{
           isOpen={ this.state.isEditModalOpen }
           closeModal={ () => this.setState({isEditModalOpen: false})}
           addContact={ (currentName, currentNumber) => this.editContact(currentName, currentNumber) }
+          modalTitle={ 'Edit Contact' }
         />
         </View>
       )

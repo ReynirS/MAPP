@@ -19,12 +19,12 @@ class AddModal extends React.Component {
   }
 
   render() {
-    const { isOpen, closeModal, addContact} = this.props;
+    const { isOpen, closeModal, addContact, modalTitle} = this.props;
     return (
       <Modal
         isOpen={isOpen}
         closeModal={closeModal}>
-        <Text style={styles.header}>Create a contact:</Text>
+        <Text style={styles.header}>{modalTitle}</Text>
         <TextInput
           placeholder={"Name"}
           placeholderTextColor='lightgray'

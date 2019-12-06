@@ -86,6 +86,7 @@ updateSearch = search => {
           isOpen={ this.state.isAddModalOpen }
           closeModal={ () => this.setState({isAddModalOpen: false})}
           addContact={(currentName, currentNumber) => this.addContact(currentName, currentNumber)}
+          modalTitle={ "Create New Contact"}
         />
       </View>
     );
