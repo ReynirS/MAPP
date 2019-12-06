@@ -13,15 +13,19 @@ class AddModal extends React.Component {
   updateCurrentName(currentName){
     this.setState({currentName});
   }
+
   updateCurrentNumber(currentNumber){
     this.setState({currentNumber});
   }
+
   updateCurrentImageUri(currentImageUri){
     this.setState({currentImageUri});
   }
+
   clearValues(){
     this.setState({currentName: '', currentNumber: '', currentImageUri: ''});
   }
+  
   render() {
     const { isOpen, closeModal, addContact, takePhoto, chooseFromCameraRoll, modalTitle} = this.props;
     return (

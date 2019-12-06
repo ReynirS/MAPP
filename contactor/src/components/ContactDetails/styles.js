@@ -22,11 +22,6 @@ export default StyleSheet.create ({
     top: 5,
     padding: 10,
   },
-  deleteButtonText: {
-    color: '#d11a2a',
-    fontWeight: 'bold',
-    fontSize: 14,
-  },
   callButton: {
     padding: 20,
     borderRadius: 10,
