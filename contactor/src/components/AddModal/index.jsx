@@ -37,7 +37,7 @@ class AddModal extends React.Component {
           placeholderTextColor='lightgray'
           value={this.state.currentNumber}
           onChangeText={text => this.updateCurrentNumber(text)}
-          keyboardType={'numeric'}
+          keyboardType={'phone-pad'}
           style={styles.numberInput}
         />
         <TouchableOpacity

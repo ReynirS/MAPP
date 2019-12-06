@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, StatusBar } from 'react-native';
 import { loadVariable } from '../../services/nameService';
 import data from '../../resources/data.json';
 import ContactDetails from '../../components/ContactDetails';
@@ -19,7 +19,7 @@ class Contact extends React.Component{
     this.setState({ currentNumber: currentNumber });
     this.setState({ isEditModalOpen: false });
 
-    //TODO delete old JSON, make new JSON 
+    //TODO delete old JSON, make new JSON
   }
 
   async componentDidMount(){
@@ -41,6 +41,7 @@ class Contact extends React.Component{
     else{
       return(
         <View style={{flex: 1, backgroundColor: '#615D6C' }}>
+        <StatusBar barStyle='light-content' />
         <ContactDetails
           contactName={this.state.currentName}
           contactNumber={this.state.currentNumber}

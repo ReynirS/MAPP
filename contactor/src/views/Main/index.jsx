@@ -1,6 +1,6 @@
 import React from 'react';
 import { SearchBar } from 'react-native-elements';
-import { View, Text, FlatList, Image } from 'react-native';
+import { View, Text, FlatList, Image, StatusBar } from 'react-native';
 import ContactList from '../../components/ContactList';
 import Toolbar from '../../components/Toolbar';
 import AddModal from '../../components/AddModal';
@@ -76,9 +76,10 @@ updateSearch = search => {
     const { search, allContacts, searchContacts } = this.state;
     return(
       <View style={{flex: 1}}>
-      <Toolbar
-        onAdd={ () => this.setState({ isAddModalOpen: true }) }
-        uploadContacts={() => this.uploadContacts()} />
+        <Toolbar
+          onAdd={ () => this.setState({ isAddModalOpen: true }) }
+          uploadContacts={() => this.uploadContacts()} />
+        <StatusBar barStyle='light-content' />
         <SearchBar
           placeholder="Type Here..."
           onChangeText={this.updateSearch}
