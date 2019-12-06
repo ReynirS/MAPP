@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { loadVariable } from '../../services/nameService';
 import { addContact, removeContact } from '../../services/fileService';
+import { takePhoto, selectFromCameraRoll } from '../../services/imageService';
 import data from '../../resources/data.json';
 import ContactDetails from '../../components/ContactDetails';
 import AddModal from '../../components/AddModal';
@@ -23,8 +24,17 @@ class Contact extends React.Component{
     this.setState({ currentName, currentNumber, currentImage });
   }
 
+  async takePhoto(){
+    const photo = takePhoto();
+    return photo;
+  }
 
-  async editContact(currentName, currentNumber) {
+  async chooseFromCameraRoll(){
+    const photo = await selectFromCameraRoll();
+    return photo;
+  }
+
+  async editContact(currentName, currentNumber, currentImageUri) {
     const oldContact = {
       "name": this.state.currentName,
       "number": this.state.currentNumber,
@@ -32,18 +42,15 @@ class Contact extends React.Component{
     }
     this.setState({ currentName: currentName });
     this.setState({ currentNumber: currentNumber });
-    this.setState({ currentImage: 'No-Image'});
+    this.setState({ currentImage: currentImageUri});
     this.setState({ isEditModalOpen: false });
     const retVal = {
       "name": currentName,
       "number": currentNumber,
-      "image": this.state.currentImage,
+      "image": currentImageUri
     };
     addContact(retVal);
     removeContact(oldContact);
-
-
-    //TODO delete old JSON, make new JSON
   }
 
   render(){
@@ -67,10 +74,12 @@ class Contact extends React.Component{
         <AddModal
           isOpen={ this.state.isEditModalOpen }
           closeModal={ () => this.setState({isEditModalOpen: false})}
-          addContact={ (currentName, currentNumber) =>{
-            this.editContact(currentName, currentNumber);
+          addContact={ (currentName, currentNumber, currentImageUri) =>{
+            this.editContact(currentName, currentNumber, currentImageUri);
             this.props.navigation.state.params.refresh();
            }}
+          takePhoto={ () => this.takePhoto()}
+          chooseFromCameraRoll={ () => this.chooseFromCameraRoll()}
           modalTitle={ 'Edit Contact' }
         />
         </View>

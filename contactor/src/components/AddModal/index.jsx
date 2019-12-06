@@ -7,6 +7,7 @@ class AddModal extends React.Component {
   state ={
     currentName: '',
     currentNumber: '',
+    currentImageUri: '',
   }
 
   updateCurrentName(currentName){
@@ -15,12 +16,15 @@ class AddModal extends React.Component {
   updateCurrentNumber(currentNumber){
     this.setState({currentNumber});
   }
+  updateCurrentImageUri(currentImageUri){
+    this.setState({currentImageUri});
+  }
   clearValues(){
-    this.setState({currentName: '', currentNumber: ''});
+    this.setState({currentName: '', currentNumber: '', currentImageUri: ''});
   }
 
   render() {
-    const { isOpen, closeModal, addContact, modalTitle} = this.props;
+    const { isOpen, closeModal, addContact, takePhoto, chooseFromCameraRoll, modalTitle} = this.props;
     return (
       <Modal
         isOpen={isOpen}
@@ -43,7 +47,25 @@ class AddModal extends React.Component {
         />
         <TouchableOpacity
           onPress={async () => {
-            await addContact(this.state.currentName, this.state.currentNumber);
+            const uri = await takePhoto();
+            this.updateCurrentImageUri(uri);
+          }}
+          style={styles.button}
+        >
+          <Text>Take photo</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={async () => {
+            const currentImageUri = await chooseFromCameraRoll();
+            this.setState({currentImageUri});
+          }}
+          style={styles.button}
+        >
+          <Text>Choose from Camera!</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={async () => {
+            await addContact(this.state.currentName, this.state.currentNumber, this.state.currentImageUri);
             this.clearValues();
           }}
           style={styles.button} >
