@@ -7,6 +7,7 @@ import AddModal from '../../components/AddModal';
 //import data from '../../resources/data.json';
 import { filterContacts } from '../../services/contactService';
 import { addContact, loadImportedContacts, getAllContacts } from '../../services/fileService';
+import {takePhoto, selectFromCameraRoll} from '../../services/imageService';
 
 
 class Main extends React.Component {
@@ -43,11 +44,14 @@ async uploadContacts(){
   await loadImportedContacts();
 }
 
-async addContact(currentName, currentNumber){
+async addContact(currentName, currentNumber, currentImageUri){
+  if(currentImageUri === ''){
+    currentImageUri = "No Image";
+  }
   const retVal = {
     "name": currentName,
     "number": currentNumber,
-    "image": "No Image",
+    "image": currentImageUri,
   };
   await addContact(retVal);
   const allContacts = [ ...this.state.allContacts, retVal ];
@@ -56,6 +60,16 @@ async addContact(currentName, currentNumber){
   searchContacts.sort((a, b) => (a.name > b.name) ? 1 : -1);
   this.setState({allContacts, searchContacts});
   this.setState({ isAddModalOpen: false});
+}
+
+async takePhoto(){
+  const photo = await takePhoto();
+  return photo;
+}
+
+async chooseFromCameraRoll(){
+  const photo = await selectFromCameraRoll();
+  return photo;
 }
 
 updateSearch = search => {
@@ -85,7 +99,9 @@ updateSearch = search => {
         <AddModal
           isOpen={ this.state.isAddModalOpen }
           closeModal={ () => this.setState({isAddModalOpen: false})}
-          addContact={(currentName, currentNumber) => this.addContact(currentName, currentNumber)}
+          addContact={(currentName, currentNumber, currentImageUri) => this.addContact(currentName, currentNumber, currentImageUri)}
+          takePhoto={() => this.takePhoto()}
+          chooseFromCameraRoll={() => this.chooseFromCameraRoll()}
           modalTitle={ "Create New Contact"}
         />
       </View>
