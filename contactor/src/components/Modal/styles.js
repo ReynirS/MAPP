@@ -17,5 +17,6 @@ export default StyleSheet.create({
     width: winWidth - 90,
     backgroundColor: '#615D6C',
     padding: 10,
+    marginBottom: 120,
   }
 });
