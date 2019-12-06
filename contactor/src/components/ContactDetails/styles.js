@@ -16,7 +16,18 @@ export default StyleSheet.create ({
     fontWeight: 'bold',
     fontSize: 20,
   },
-  button: {
+  deleteButton: {
+    position: 'absolute',
+    right: 5,
+    top: 5,
+    padding: 10,
+  },
+  deleteButtonText: {
+    color: '#d11a2a',
+    fontWeight: 'bold',
+    fontSize: 14,
+  },
+  callButton: {
     padding: 20,
     borderRadius: 10,
     backgroundColor: 'gray',
@@ -26,7 +37,7 @@ export default StyleSheet.create ({
   lowerText: {
     marginBottom: 60,
   },
-  buttonText: {
+  callButtonText: {
     color: 'white',
     fontWeight: 'bold',
     fontSize: 20,
