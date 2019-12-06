@@ -16,5 +16,6 @@ export default StyleSheet.create({
     borderRadius: 10,
     width: winWidth - 90,
     backgroundColor: '#615D6C',
-    padding: 4,}
+    padding: 10,
+  }
 });

@@ -40,14 +40,14 @@ class AddModal extends React.Component {
           keyboardType={'numeric'}
           style={styles.numberInput}
         />
-        <Button
-          title={"Submit"}
+        <TouchableOpacity
           onPress={() => {
             addContact(this.state.currentName, this.state.currentNumber);
             this.clearValues();
           }}
-          style={styles.button}
-        />
+          style={styles.button} >
+        <Text>Submit</Text>
+        </TouchableOpacity>
       </Modal>
     );
   }
