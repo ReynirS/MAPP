@@ -19,7 +19,6 @@ state = {
 };
 
 async componentDidMount() {
-  await this.uploadContacts();
   await this._fetchItems();
 }
 
@@ -41,6 +40,10 @@ filterByValue(array, string) {
 
 async uploadContacts(){
   await loadImportedContacts();
+  const loadedCon = await getAllContacts();
+  const allContacts = loadedCon.sort((a, b) => (a.name > b.name) ? 1 : -1);
+  const searchContacts = allContacts;
+  this.setState({allContacts, searchContacts});
 }
 
 async addContact(currentName, currentNumber){
@@ -73,7 +76,9 @@ updateSearch = search => {
     const { search, allContacts, searchContacts } = this.state;
     return(
       <View style={{flex: 1}}>
-      <Toolbar onAdd={ () => this.setState({ isAddModalOpen: true }) } />
+      <Toolbar
+        onAdd={ () => this.setState({ isAddModalOpen: true }) }
+        uploadContacts={() => this.uploadContacts()} />
         <SearchBar
           placeholder="Type Here..."
           onChangeText={this.updateSearch}
