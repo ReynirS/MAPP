@@ -34,6 +34,10 @@ async _fetchItems() {
   this.setState({allContacts, searchContacts});
 }
 
+refresh(){
+  this._fetchItems();
+}
+
 filterByValue(array, string) {
     return array.filter(o =>
         Object.keys(o).some(k => o[k].toLowerCase().includes(string.toLowerCase())));
@@ -81,6 +85,8 @@ updateSearch = search => {
         />
         <ContactList
           contacts={searchContacts}
+          refresh={() => this._fetchItems()}
+
         />
         <AddModal
           isOpen={ this.state.isAddModalOpen }

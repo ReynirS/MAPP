@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList } from 'react-native';
 import { loadVariable } from '../../services/nameService';
+import { addContact, removeContact } from '../../services/fileService';
 import data from '../../resources/data.json';
 import ContactDetails from '../../components/ContactDetails';
 import AddModal from '../../components/AddModal';
@@ -14,14 +15,6 @@ class Contact extends React.Component{
     isEditModalOpen: false
   }
 
-  async editContact(currentName, currentNumber) {
-    this.setState({ currentName: currentName });
-    this.setState({ currentNumber: currentNumber });
-    this.setState({ isEditModalOpen: false });
-
-    //TODO delete old JSON, make new JSON 
-  }
-
   async componentDidMount(){
     const { navigation } = this.props;
     const currentName = await loadVariable(navigation.getParam('name', ''));
@@ -30,7 +23,31 @@ class Contact extends React.Component{
     this.setState({ currentName, currentNumber, currentImage });
   }
 
+
+  async editContact(currentName, currentNumber) {
+    const oldContact = {
+      "name": this.state.currentName,
+      "number": this.state.currentNumber,
+      "image": this.state.currentImage
+    }
+    this.setState({ currentName: currentName });
+    this.setState({ currentNumber: currentNumber });
+    this.setState({ currentImage: 'No-Image'});
+    this.setState({ isEditModalOpen: false });
+    const retVal = {
+      "name": currentName,
+      "number": currentNumber,
+      "image": this.state.currentImage,
+    };
+    addContact(retVal);
+    removeContact(oldContact);
+
+
+    //TODO delete old JSON, make new JSON
+  }
+
   render(){
+    const {pop} = this.props.navigation;
     if((this.state.currentName == '') || (this.state.currentNumber == '')){
       return(
         <View>
@@ -50,7 +67,10 @@ class Contact extends React.Component{
         <AddModal
           isOpen={ this.state.isEditModalOpen }
           closeModal={ () => this.setState({isEditModalOpen: false})}
-          addContact={ (currentName, currentNumber) => this.editContact(currentName, currentNumber) }
+          addContact={ (currentName, currentNumber) =>{
+            this.editContact(currentName, currentNumber);
+            this.props.navigation.state.params.refresh();
+           }}
           modalTitle={ 'Edit Contact' }
         />
         </View>

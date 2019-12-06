@@ -8,6 +8,7 @@ class AddModal extends React.Component {
     currentName: '',
     currentNumber: '',
   }
+
   updateCurrentName(currentName){
     this.setState({currentName});
   }
@@ -41,8 +42,8 @@ class AddModal extends React.Component {
           style={styles.numberInput}
         />
         <TouchableOpacity
-          onPress={() => {
-            addContact(this.state.currentName, this.state.currentNumber);
+          onPress={async () => {
+            await addContact(this.state.currentName, this.state.currentNumber);
             this.clearValues();
           }}
           style={styles.button} >
