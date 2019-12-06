@@ -23,16 +23,6 @@ export default StyleSheet.create({
     marginTop: 0,
     borderRadius: 5,
   },
-  buttonDisabled: {
-    margin: 5,
-    backgroundColor: 'red',
-    textAlign: 'center',
-    padding: 10,
-    borderWidth: 1,
-    borderColor: 'white',
-    borderRadius: 10,
-    color: 'blue',
-  },
   button:{
     margin: 5,
     backgroundColor: 'gray',

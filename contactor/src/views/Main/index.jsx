@@ -79,7 +79,7 @@ async chooseFromCameraRoll(){
   return photo;
 }
 
-updateSearch(search){
+updateSearch = search =>{
   const data = this.state.allContacts;
   this.setState({ search });
   const searchContactsNames = data.filter(o => o.name.toLowerCase().includes(search.toLowerCase()));
