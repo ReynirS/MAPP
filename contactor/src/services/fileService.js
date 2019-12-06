@@ -62,6 +62,14 @@ export const loadContact = async contactName =>{
   return await onException(() => FileSystem.readAsStringAsync(`${contactDirectory}/${contactName}`));
 }
 
+export const removeContact = async contact => {
+  console.log(contact);
+  const result = await onException(() => FileSystem.readDirectoryAsync(contactDirectory));
+  console.log(result);
+  const fileName = validNameMaker(contact.name, contact.number);
+  return await onException(() => FileSystem.deleteAsync(`${contactDirectory}/${fileName}.json`));
+}
+
 export const getAllContacts = async () => {
   await setupDirectory();
 

@@ -9,13 +9,14 @@ class AddModal extends React.Component {
     currentNumber: '',
     currentImageUri: '',
   }
+
   updateCurrentName(currentName){
     this.setState({currentName});
   }
   updateCurrentNumber(currentNumber){
     this.setState({currentNumber});
   }
-  async updateCurrentImageUri(currentImageUri){
+  updateCurrentImageUri(currentImageUri){
     this.setState({currentImageUri});
   }
   clearValues(){
@@ -23,7 +24,6 @@ class AddModal extends React.Component {
   }
   render() {
     const { isOpen, closeModal, addContact, takePhoto, chooseFromCameraRoll, modalTitle} = this.props;
-    //console.log(this.state.currentImageUri);
     return (
       <Modal
         isOpen={isOpen}
@@ -63,8 +63,8 @@ class AddModal extends React.Component {
           <Text>Choose from Camera!</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => {
-            addContact(this.state.currentName, this.state.currentNumber, this.state.currentImageUri);
+          onPress={async () => {
+            await addContact(this.state.currentName, this.state.currentNumber, this.state.currentImageUri);
             this.clearValues();
           }}
           style={styles.button} >
