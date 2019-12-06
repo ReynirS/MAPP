@@ -3,9 +3,9 @@ import {View, TouchableOpacity, Text, Image, Alert } from 'react-native';
 import styles from './styles.js';
 
 
-const Toolbar = ({onAdd}) => (
+const Toolbar = ({onAdd, uploadContacts}) => (
   <View styleName="horizontal" style={styles.toolbar}>
-    <TouchableOpacity onPress={() => {}} style={styles.importContacts}>
+    <TouchableOpacity onPress={() => uploadContacts()} style={styles.importContacts}>
       <Text style={styles.importText}>Import Contacts</Text>
     </TouchableOpacity>
     <TouchableOpacity onPress={ onAdd } style={styles.addIcon}>

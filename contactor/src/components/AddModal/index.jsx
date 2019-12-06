@@ -1,5 +1,5 @@
 import React from 'react';
-import { TouchableOpacity, Text, TextInput, Button } from 'react-native';
+import { TouchableOpacity, Text, TextInput, Button, Image } from 'react-native';
 import Modal from '../Modal';
 import styles from './styles';
 
@@ -22,7 +22,6 @@ class AddModal extends React.Component {
   clearValues(){
     this.setState({currentName: '', currentNumber: '', currentImageUri: ''});
   }
-
   render() {
     const { isOpen, closeModal, addContact, takePhoto, chooseFromCameraRoll, modalTitle} = this.props;
     return (
@@ -42,7 +41,7 @@ class AddModal extends React.Component {
           placeholderTextColor='lightgray'
           value={this.state.currentNumber}
           onChangeText={text => this.updateCurrentNumber(text)}
-          keyboardType={'numeric'}
+          keyboardType={'phone-pad'}
           style={styles.numberInput}
         />
         <TouchableOpacity

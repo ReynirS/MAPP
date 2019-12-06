@@ -8,6 +8,9 @@ const {width} = Dimensions.get('window')
 
 const ContactDetails = ({contactName, contactNumber, contactImage, onEdit}) => (
   <View style={styles.contact}>
+    <TouchableOpacity style={styles.deleteButton}>
+      <Text style={styles.deleteButtonText}>Delete</Text>
+    </TouchableOpacity>
     <Avatar
       containerStyle={styles.avatar}
       size={width*0.8}
@@ -20,8 +23,8 @@ const ContactDetails = ({contactName, contactNumber, contactImage, onEdit}) => (
     <Text style={styles.text}>{contactName}</Text>
     <Text style={[styles.text, styles.lowerText]}>{contactNumber}</Text>
     <TouchableOpacity onPress={() => Communications.phonecall(contactNumber, true)}>
-      <View style={styles.button}>
-        <Text style={styles.buttonText}>Call me?</Text>
+      <View style={styles.callButton}>
+        <Text style={styles.callButtonText}>Call me?</Text>
       </View>
     </TouchableOpacity>
   </View>

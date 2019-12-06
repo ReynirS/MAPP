@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, FlatList } from 'react-native';
+import { View, Text, FlatList, StatusBar } from 'react-native';
 import { loadVariable } from '../../services/nameService';
 import { addContact, removeContact } from '../../services/fileService';
 import { takePhoto, selectFromCameraRoll } from '../../services/imageService';
@@ -65,6 +65,7 @@ class Contact extends React.Component{
     else{
       return(
         <View style={{flex: 1, backgroundColor: '#615D6C' }}>
+        <StatusBar barStyle='light-content' />
         <ContactDetails
           contactName={this.state.currentName}
           contactNumber={this.state.currentNumber}

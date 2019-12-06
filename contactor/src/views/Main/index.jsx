@@ -1,12 +1,13 @@
 import React from 'react';
 import { SearchBar } from 'react-native-elements';
-import { View, Text, FlatList, Image } from 'react-native';
+import { View, Text, FlatList, Image, StatusBar } from 'react-native';
 import ContactList from '../../components/ContactList';
 import Toolbar from '../../components/Toolbar';
 import AddModal from '../../components/AddModal';
 //import data from '../../resources/data.json';
 import { filterContacts } from '../../services/contactService';
 import { addContact, loadImportedContacts, getAllContacts } from '../../services/fileService';
+import {takePhoto, selectFromCameraRoll} from '../../services/imageService';
 
 
 class Main extends React.Component {
@@ -19,7 +20,6 @@ state = {
 };
 
 async componentDidMount() {
-  await this.uploadContacts();
   await this._fetchItems();
 }
 
@@ -45,13 +45,20 @@ filterByValue(array, string) {
 
 async uploadContacts(){
   await loadImportedContacts();
+  const loadedCon = await getAllContacts();
+  const allContacts = loadedCon.sort((a, b) => (a.name > b.name) ? 1 : -1);
+  const searchContacts = allContacts;
+  this.setState({allContacts, searchContacts});
 }
 
-async addContact(currentName, currentNumber){
+async addContact(currentName, currentNumber, currentImageUri){
+  if(currentImageUri === ''){
+    currentImageUri = "No Image";
+  }
   const retVal = {
     "name": currentName,
     "number": currentNumber,
-    "image": "No Image",
+    "image": currentImageUri,
   };
   await addContact(retVal);
   const allContacts = [ ...this.state.allContacts, retVal ];
@@ -60,6 +67,16 @@ async addContact(currentName, currentNumber){
   searchContacts.sort((a, b) => (a.name > b.name) ? 1 : -1);
   this.setState({allContacts, searchContacts});
   this.setState({ isAddModalOpen: false});
+}
+
+async takePhoto(){
+  const photo = await takePhoto();
+  return photo;
+}
+
+async chooseFromCameraRoll(){
+  const photo = await selectFromCameraRoll();
+  return photo;
 }
 
 updateSearch = search => {
@@ -77,7 +94,10 @@ updateSearch = search => {
     const { search, allContacts, searchContacts } = this.state;
     return(
       <View style={{flex: 1}}>
-      <Toolbar onAdd={ () => this.setState({ isAddModalOpen: true }) } />
+        <Toolbar
+          onAdd={ () => this.setState({ isAddModalOpen: true }) }
+          uploadContacts={() => this.uploadContacts()} />
+        <StatusBar barStyle='light-content' />
         <SearchBar
           placeholder="Type Here..."
           onChangeText={this.updateSearch}
@@ -91,7 +111,9 @@ updateSearch = search => {
         <AddModal
           isOpen={ this.state.isAddModalOpen }
           closeModal={ () => this.setState({isAddModalOpen: false})}
-          addContact={(currentName, currentNumber) => this.addContact(currentName, currentNumber)}
+          addContact={(currentName, currentNumber, currentImageUri) => this.addContact(currentName, currentNumber, currentImageUri)}
+          takePhoto={() => this.takePhoto()}
+          chooseFromCameraRoll={() => this.chooseFromCameraRoll()}
           modalTitle={ "Create New Contact"}
         />
       </View>
