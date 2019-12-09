@@ -8,9 +8,6 @@ const {width} = Dimensions.get('window')
 
 const ContactDetails = ({contactName, contactNumber, contactImage, onEdit}) => (
   <View style={styles.contact}>
-    <TouchableOpacity style={styles.deleteButton}>
-      <Text style={styles.deleteButtonText}>Delete</Text>
-    </TouchableOpacity>
     <Avatar
       containerStyle={styles.avatar}
       size={width*0.8}

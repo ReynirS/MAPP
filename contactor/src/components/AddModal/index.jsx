@@ -12,24 +12,20 @@ class AddModal extends React.Component {
 
   updateCurrentName(currentName){
     this.setState({currentName});
-    this.setState({ submitOk: false });
-    if(this.state.currentName.length > 0 && this.state.currentNumber.length > 6){
-      this.setState({ submitOk: true })
-    };
   }
+
   updateCurrentNumber(currentNumber){
     this.setState({currentNumber});
-    this.setState({ submitOk: false });
-    if(this.state.currentName.length > 0 && this.state.currentNumber.length > 6){
-      this.setState({ submitOk: true })
-    };
   }
+
   updateCurrentImageUri(currentImageUri){
     this.setState({currentImageUri});
   }
+
   clearValues(){
     this.setState({currentName: '', currentNumber: '', currentImageUri: ''});
   }
+
   render() {
     const { isOpen, closeModal, addContact, takePhoto, chooseFromCameraRoll, modalTitle} = this.props;
     return (
@@ -71,12 +67,12 @@ class AddModal extends React.Component {
           <Text>Choose from Camera!</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          disabled={ !this.state.submitOk }
           onPress={async () => {
             await addContact(this.state.currentName, this.state.currentNumber, this.state.currentImageUri);
             this.clearValues();
           }}
-          style={ !this.state.submitOk ? styles.buttonDisabled : styles.button } >
+          style={styles.button}
+        >
         <Text>Submit</Text>
         </TouchableOpacity>
       </Modal>

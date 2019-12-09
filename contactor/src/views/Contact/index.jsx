@@ -3,7 +3,7 @@ import { View, Text, FlatList, StatusBar } from 'react-native';
 import { loadVariable } from '../../services/nameService';
 import { addContact, removeContact } from '../../services/fileService';
 import { takePhoto, selectFromCameraRoll } from '../../services/imageService';
-import data from '../../resources/data.json';
+import styles  from './styles';
 import ContactDetails from '../../components/ContactDetails';
 import AddModal from '../../components/AddModal';
 
@@ -54,7 +54,6 @@ class Contact extends React.Component{
   }
 
   render(){
-    const {pop} = this.props.navigation;
     if((this.state.currentName == '') || (this.state.currentNumber == '')){
       return(
         <View>
@@ -64,7 +63,7 @@ class Contact extends React.Component{
     }
     else{
       return(
-        <View style={{flex: 1, backgroundColor: '#615D6C' }}>
+        <View style={styles.view}>
         <StatusBar barStyle='light-content' />
         <ContactDetails
           contactName={this.state.currentName}

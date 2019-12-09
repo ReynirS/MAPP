@@ -4,10 +4,10 @@ import { View, Text, FlatList, Image, StatusBar } from 'react-native';
 import ContactList from '../../components/ContactList';
 import Toolbar from '../../components/Toolbar';
 import AddModal from '../../components/AddModal';
-//import data from '../../resources/data.json';
 import { filterContacts } from '../../services/contactService';
 import { addContact, loadImportedContacts, getAllContacts } from '../../services/fileService';
 import {takePhoto, selectFromCameraRoll} from '../../services/imageService';
+import styles from './styles';
 
 
 class Main extends React.Component {
@@ -79,7 +79,7 @@ async chooseFromCameraRoll(){
   return photo;
 }
 
-updateSearch = search => {
+updateSearch = search =>{
   const data = this.state.allContacts;
   this.setState({ search });
   const searchContactsNames = data.filter(o => o.name.toLowerCase().includes(search.toLowerCase()));
@@ -93,7 +93,7 @@ updateSearch = search => {
   render(){
     const { search, allContacts, searchContacts } = this.state;
     return(
-      <View style={{flex: 1}}>
+      <View style={styles.view}>
         <Toolbar
           onAdd={ () => this.setState({ isAddModalOpen: true }) }
           uploadContacts={() => this.uploadContacts()} />

@@ -63,9 +63,7 @@ export const loadContact = async contactName =>{
 }
 
 export const removeContact = async contact => {
-  console.log(contact);
   const result = await onException(() => FileSystem.readDirectoryAsync(contactDirectory));
-  console.log(result);
   const fileName = validNameMaker(contact.name, contact.number);
   return await onException(() => FileSystem.deleteAsync(`${contactDirectory}/${fileName}.json`));
 }
