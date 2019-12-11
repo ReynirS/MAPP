@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
-import {getMoviesByCinemaID } from '../../actions/movieActions';
+import { getMoviesByCinemaID } from '../../actions/movieActions';
 import UpcomingList from '../../components/UpcomingList';
 
 class Upcoming extends React.Component {

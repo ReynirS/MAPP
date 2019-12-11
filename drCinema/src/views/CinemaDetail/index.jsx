@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import { getCinemaById } from '../../actions/theaterActions';
-import {getMoviesByCinemaId} from '../../actions/movieActions';
+import {getMoviesByCinemaID} from '../../actions/movieActions';
 import { loadVariable } from '../../services/variableService';
 import CinemaDetailView from '../../components/CinemaDetailView';
 
@@ -27,7 +27,7 @@ class CinemaDetail extends React.Component {
   getMoviesByCinemaId(id){
     const {getMoviesByCinemaId} = this.props;
     if(!(id < 1)){
-      getMoviesByCinemaId(id);
+      getMoviesByCinemaID(id);
     }
   }
 

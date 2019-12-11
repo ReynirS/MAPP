@@ -14,18 +14,18 @@ const gettingAllMovies = async () => {
 }
 
 export const getMoviesByCinemaID = async cinemaID => {
-  const moveList = await getMovies();
+  const moveList = await gettingAllMovies();
   const validMovies = [];
   // iterate through all movies
-  for (i = 0; i < moveList.length; i++) {
+  for (var i = 0; i < moveList.length; i++) {
     // iterate through all showtimes of current movie
-    for (j = 0; j < moveList[i]["showtimes"].length; j++) {
+    for (var j = 0; j < moveList[i]["showtimes"].length; j++) {
       // movies may have cineam id as object or number so we much check both
       if (moveList[i]["showtimes"][j]["cinema"]["id"] == cinemaID ||
           moveList[i]["showtimes"][j]["cinema"] == cinemaID) {
 
           // the required values for cineam details we must extract
-          validMovie =  {
+          const validMovie =  {
             cinemaID  : cinemaID,
             movieID   : moveList[i]["id"],
             title     : moveList[i]["title"],
