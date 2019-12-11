@@ -12,6 +12,7 @@ const gettingAllMovies = async () => {
   return movies.data;
 }
 
+
 export const gettingUpcomingMovies = async () => {
   const token = await gettingToken();
   const movies = await axios.get("http://api.kvikmyndir.is/movies", {
