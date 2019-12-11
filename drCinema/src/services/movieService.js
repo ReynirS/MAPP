@@ -13,21 +13,30 @@ const gettingAllMovies = async () => {
   return movies.data;
 }
 
-//TO DO: FIX THIS FUNCTION
-export const gettingMoviesByCinemaId = async (cinemaId) => {
-  const movies = await gettingAllMovies();
-  const moviesById = movies.map(movie => {
-    var flag = false;
-    if(typeof movie.showtimes !== 'undefined'){
-      movies.showtimes.forEach(showtime => {
-        if(showtime.cinema.id === cinemaId){
-          flag = true;
-        }
-      });
+export const getMoviesByCinemaID = async cinemaID => {
+  const moveList = await getMovies();
+  const validMovies = [];
+  // iterate through all movies
+  for (i = 0; i < moveList.length; i++) {
+    // iterate through all showtimes of current movie
+    for (j = 0; j < moveList[i]["showtimes"].length; j++) {
+      // movies may have cineam id as object or number so we much check both
+      if (moveList[i]["showtimes"][j]["cinema"]["id"] == cinemaID ||
+          moveList[i]["showtimes"][j]["cinema"] == cinemaID) {
+
+          // the required values for cineam details we must extract
+          validMovie =  {
+            cinemaID  : cinemaID,
+            movieID   : moveList[i]["id"],
+            title     : moveList[i]["title"],
+            poster    : moveList[i]["poster"],
+            year      : moveList[i]["year"],
+            genres    : moveList[i]["genres"],
+          }
+
+        validMovies.push(validMovie);
+      }
     }
-    if(flag){
-      return movie;
-    }
-  });
-  return moviesById;
+  }
+  return validMovies;
 }
