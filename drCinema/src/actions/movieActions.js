@@ -1,9 +1,9 @@
-import { gettingMoviesByCinemaId } from '../services/movieService';
+import { gettingMoviesByCinemaID } from '../services/movieService';
 
-export const getMoviesByCinemaId = cinemaId => {
+export const getMoviesByCinemaID = cinemaId => {
   return async dispatch => {
     try{
-      const movies = await gettingMoviesByCinemaId(cinemaId);
+      const movies = await gettingMoviesByCinemaID(cinemaId);
       dispatch(getMoviesByCinemaIdSuccess(movies));
     } catch(err){
       console.log("ERRROR BITCH" + err);
