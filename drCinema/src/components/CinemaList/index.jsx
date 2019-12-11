@@ -5,7 +5,7 @@ import CinemaThumbnail from '../CinemaThumbnail';
 
 
 const CinemaList = props => {
-  if(props.theaters.length === 0){
+  if(props.theaters.length === 0 ||typeof props.theaters.theaters === 'undefined'){
     return(
       <View>
         <Text>Loading</Text>
@@ -13,8 +13,7 @@ const CinemaList = props => {
     );
   }
   else{
-    /*const copy = props.theaters.theaters;
-    const sortedCopy = copy.sort();*/
+
     return (
       <View>
         <FlatList
@@ -34,5 +33,9 @@ const CinemaList = props => {
     );
   }
 }
-const mapStateToProps = ({ theaters }) => ({ theaters });
+const mapStateToProps = reduxStoreState => {
+  return {
+      theaters: reduxStoreState.theaters.getAllTheaters,
+  };
+}
 export default connect(mapStateToProps)(CinemaList);
