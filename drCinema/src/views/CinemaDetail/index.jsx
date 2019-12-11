@@ -33,6 +33,7 @@ class CinemaDetail extends React.Component {
 
   render(){
     this.getCinemaById(this.state.currentId);
+    this.getMoviesByCinemaId(this.state.currentId);
     //EKKI SNERTA ÞESSI 2 FYRIR NEÐAN
   //  this.getMoviesByCinemaId(this.state.currentId);
     //console.log(this.props.movies);
@@ -45,10 +46,5 @@ class CinemaDetail extends React.Component {
   }
 }
 
-const mapStateToProps = reduxStoreState => {
-  return {
-    movies: reduxStoreState.movies.getMoviesByCinemaId
-  };
-}
 
-export default connect(mapStateToProps, {getCinemaById, getMoviesByCinemaId})(CinemaDetail);
+export default connect(null, {getCinemaById, getMoviesByCinemaId})(CinemaDetail);
