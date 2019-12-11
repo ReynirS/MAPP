@@ -51,4 +51,4 @@ const mapStateToProps = reduxStoreState => {
   };
 }
 
-export default connect(mapStateToProps, {getCinemaById, getMoviesByCinemaId})(CinemaDetail);
+export default connect(mapStateToProps, {getCinemaById, getMoviesByCinemaID})(CinemaDetail);

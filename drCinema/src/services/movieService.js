@@ -9,11 +9,20 @@ const gettingAllMovies = async () => {
       'x-access-token': token,
     },
   })
-  console.log(movies.data);
   return movies.data;
 }
 
-export const getMoviesByCinemaID = async cinemaID => {
+export const gettingUpcomingMovies = async () => {
+  const token = await gettingToken();
+  const movies = await axios.get("http://api.kvikmyndir.is/movies", {
+    headers: {
+      'x-access-token': token,
+    },
+  })
+  return movies.data;
+}
+
+export const gettingMoviesByCinemaID = async cinemaID => {
   const moveList = await gettingAllMovies();
   const validMovies = [];
   // iterate through all movies
