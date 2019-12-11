@@ -1,18 +1,18 @@
 import React from 'react';
 import { View, Text, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
-import { getMoviesByCinemaID } from '../../actions/movieActions';
+import { getUpcomingMovies } from '../../actions/upcomingActions';
 import UpcomingList from '../../components/UpcomingList';
 
 class Upcoming extends React.Component {
 
-  getMoviesByCinemaID(){
-    const { getMoviesByCinemaID } = this.props;
-    getMoviesByCinemaID();
+  getUpcomingMovies(){
+    const { getUpcomingMovies } = this.props;
+    getUpcomingMovies();
   }
 
   render(){
-    this.getMoviesByCinemaID();
+    this.getUpcomingMovies();
     return(
       <View style={{ flex: 1 }}>
         <StatusBar barStyle='light-content' />
@@ -22,4 +22,4 @@ class Upcoming extends React.Component {
   }
 }
 
-export default connect(null, { getMoviesByCinemaID})(Upcoming);
+export default connect(null, { getUpcomingMovies})(Upcoming);

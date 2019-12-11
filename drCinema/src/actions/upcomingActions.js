@@ -12,6 +12,6 @@ export const getUpcomingMovies = () => {
 }
 
 const getUpcomingMoviesSuccess = upcomingMovies => ({
-  type: 'GET_UPCOMING_MOIVES',
+  type: 'GET_UPCOMING_MOVIES',
   payload: upcomingMovies,
 });
