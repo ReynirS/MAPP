@@ -8,11 +8,14 @@ const CinemaThumbnail = ({ name, website, id, navigation: {navigate} }) => (
   <TouchableOpacity
     activeOpacity={0.8}
     onPress={() => navigate('CinemaDetail', {id})}>
-    <View>
+    <View style={styles.view}>
       <ListItem
-        containerStyle={{backgroundColor: 'white'}}
+        style={styles.list}
+        containerStyle={styles.containerStyle}
         title={name}
+        titleStyle={styles.titleStyle}
         subtitle={website}
+        subtitleStyle={styles.subtitleStyle}
         bottomDivider
         />
     </View>

@@ -2,6 +2,7 @@ import React from 'react';
 import {View, Text, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import CinemaThumbnail from '../CinemaThumbnail';
+import styles from './styles'
 
 
 const CinemaList = props => {
@@ -15,7 +16,7 @@ const CinemaList = props => {
   else{
 
     return (
-      <View>
+      <View style={styles.view}>
         <FlatList
         numColumns={1}
         data={props.theaters.theaters.sort((a, b) => (a.name > b.name) ? 1 : -1)}
