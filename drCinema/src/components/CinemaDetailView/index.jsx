@@ -1,6 +1,7 @@
 import React from 'react';
-import {View, Text } from 'react-native';
+import {View, Text, Linking } from 'react-native';
 import { connect } from 'react-redux';
+import styles from './styles';
 
 const CinemaDetailView = props => {
   if(typeof props.theater.theater === 'undefined'){
@@ -25,13 +26,16 @@ const CinemaDetailView = props => {
       phoneNumber = props.theater.theater.phone;
     }
     let fullAddress = props.theater.theater.address + ", " + props.theater.theater.city;
+    let website = 'http://' + props.theater.theater.website.toString();
     return(
       <View>
-        <Text>{props.theater.theater.name}</Text>
-        <Text>{tmpDescription}</Text>
-        <Text>{fullAddress}</Text>
-        <Text>{phoneNumber}</Text>
-        <Text>{props.theater.theater.website}</Text>
+        <Text style={styles.name}>{props.theater.theater.name}</Text>
+        <Text style={styles.description}>{tmpDescription}</Text>
+        <Text style={styles.address}>{fullAddress}</Text>
+        <Text style={styles.phoneNumber}>{phoneNumber}</Text>
+        <Text style={styles.website} onPress={() => {
+          Linking.openURL(website);
+        }}>{props.theater.theater.website}</Text>
       </View>
     );
   }
