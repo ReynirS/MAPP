@@ -13,8 +13,8 @@ const gettingAllMovies = async () => {
   return movies.data;
 }
 
-export const getMoviesByCinemaID = async cinemaID => {
-  const moveList = await getMovies();
+export const gettingMoviesByCinemaID = async cinemaID => {
+  const moveList = await gettingAllMovies();
   const validMovies = [];
   // iterate through all movies
   for (i = 0; i < moveList.length; i++) {
