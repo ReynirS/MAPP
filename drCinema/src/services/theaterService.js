@@ -13,3 +13,10 @@ export const gettingTheaters = async () => {
   //console.log(movies);
   return theaters.data;
 }
+
+export const gettingCinemaById = async (id) =>{
+  const theaters = await gettingTheaters();
+  //console.log(id);
+  const theater = theaters.find(cinema => cinema.id == id);
+  return theater;
+}
