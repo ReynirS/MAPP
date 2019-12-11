@@ -34,7 +34,7 @@ class CinemaDetail extends React.Component {
   render(){
     this.getCinemaById(this.state.currentId);
     //EKKI SNERTA ÞESSI 2 FYRIR NEÐAN
-  //  this.getMoviesByCinemaId(this.state.currentId);
+  //  this.getMoviesByCinemaID(this.state.currentId);
     //console.log(this.props.movies);
     return(
       <View style={{ flex: 1} }>
