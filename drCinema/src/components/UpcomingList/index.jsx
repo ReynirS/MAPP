@@ -13,12 +13,12 @@ const UpcomingList = props => {
     );
   }
   else{
-    console.log(props.upcomingMovies.upcomingMovies);
     return(
       <View style={styles.view}>
         <FlatList
           numColumns={1}
-          data={props.upcomingMovies.upcomingMovies.sort((a, b) => (a.name > b.name) ? 1 : -1)}
+          // sort movies by release date  
+          data={props.upcomingMovies.upcomingMovies.sort((a, b) => (a["release-dateIS"] > b["release-dateIS"]) ? 1 : -1)}
           renderItem={({item:{"title":title, "poster":poster, "release-dateIS": release}}) => {
             let date = new Date(release).toString();
             let dateArr = date.split(' ');
