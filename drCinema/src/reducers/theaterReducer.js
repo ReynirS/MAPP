@@ -11,17 +11,25 @@ function getAllTheaters(state = [], action){
 
 function getCinemaById(state = {}, action){
   switch(action.type){
-    case 'GET_THEATER_BY_ID':
-    return Object.assign({}, state, {
+    case 'GET_THEATER_BY_ID': return Object.assign({}, state, {
       theater: action.payload
     });
     default: return state;
   }
 }
 
+function cinemaIsLoading(state = false, action){
+  switch(action.type){
+    case 'LOADING_CINEMA_BY_ID': return Object.assign({}, state, {
+      loading: action.payload
+    });
+    default: return state;
+  }
+}
 const theaterShit = combineReducers({
   getAllTheaters,
   getCinemaById,
+  cinemaIsLoading,
 })
 
 export default theaterShit;

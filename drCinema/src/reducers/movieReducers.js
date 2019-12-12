@@ -18,9 +18,29 @@ function getMovieByMovieId(state = [], action){
   }
 }
 
+function loadingMoviesByCinemaId(state = false, action){
+  switch(action.type){
+    case 'LOADING_MOVIES_BY_CINEMA_ID': return Object.assign({}, state, {
+      loading: action.payload,
+    });
+    default: return state;
+  }
+}
+
+function loadingMovieByMovieId(state = false, action){
+  switch(action.type){
+    case 'LOADING_MOVIE_BY_MOVIE_ID': return Object.assign({}, state, {
+      loading: action.payload,
+    });
+    default: return state;
+  }
+}
+
 const movieShit = combineReducers({
   getMoviesByCinemaID,
-  getMovieByMovieId
+  getMovieByMovieId,
+  loadingMoviesByCinemaId,
+  loadingMovieByMovieId
 })
 
 export default movieShit;

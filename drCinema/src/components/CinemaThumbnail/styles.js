@@ -8,10 +8,15 @@ export default StyleSheet.create({
   list: {
     textAlign: 'center',
     borderWidth: 1,
-    borderColor: 'black'
+    borderColor: 'black',
+    borderRadius: 6
+  },
+  containerStyle:{
+    borderRadius: 6
   },
   titleStyle: {
     textAlign: 'center',
+    fontSize: 24
   },
   subtitleStyle: {
     textAlign: 'center',

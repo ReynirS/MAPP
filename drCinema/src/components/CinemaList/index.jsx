@@ -1,15 +1,16 @@
 import React from 'react';
-import {View, Text, FlatList } from 'react-native';
+import {View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import CinemaThumbnail from '../CinemaThumbnail';
 import styles from './styles'
+import Spinner from '../Spinner';
 
 
 const CinemaList = props => {
   if(props.theaters.length === 0 ||typeof props.theaters.theaters === 'undefined'){
     return(
-      <View>
-        <Text>Loading</Text>
+      <View style={styles.spinnerView}>
+        <Spinner />
       </View>
     );
   }

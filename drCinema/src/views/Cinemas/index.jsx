@@ -3,8 +3,8 @@ import { View, Text, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import { getTheaters } from '../../actions/theaterActions';
 import CinemaList from '../../components/CinemaList';
-// for testing, ok to remove
-import { gettingUpcomingMovies } from '../../services/movieService';
+import styles from './styles';
+//import { gettingUpcomingMovies } from '../../services/movieService';
 
 class Cinemas extends React.Component {
 
@@ -16,10 +16,10 @@ class Cinemas extends React.Component {
 
   render(){
     this.getTheaters();
-    gettingUpcomingMovies();
+    //gettingUpcomingMovies();
     return(
-      <View style={{ flex: 1} }>
-        <StatusBar barStyle='light-content' />
+      <View style={styles.view}>
+        <StatusBar backgroundColor='blue' barStyle='light-content' />
         <CinemaList />
       </View>
     );
