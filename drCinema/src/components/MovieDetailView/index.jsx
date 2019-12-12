@@ -1,31 +1,35 @@
 import React from 'react';
-import {View, Text, Image} from 'react-native';
+import {ScrollView, Text, Image} from 'react-native';
 import { connect } from 'react-redux';
 import MovieShowtimesInCinema from '../MovieShowtimesInCinema';
+import styles from './style';
 
 const MovieDetailView = props => {
   if(typeof props.movie.movieByMovieId === 'undefined'){
     return (
-      <View>
+      <ScrollView>
         <Text>Loading</Text>
-      </View>
+      </ScrollView>
     );
   }
   else{
     let genreString = props.movie.movieByMovieId.genres.map(m => m.Name + '\n').toString().split(',').join('');
     return(
-      <View>
+      <ScrollView
+        style={styles.view}
+        scrollEnabled>
         <Image
-        style={{height: 100, width: 100}}
+        style={styles.image}
         source={{uri:props.movie.movieByMovieId.poster}}
         />
-        <Text>Title: {props.movie.movieByMovieId.title}</Text>
-        <Text>Release year: {props.movie.movieByMovieId.year}</Text>
-        <Text>Plot: {props.movie.movieByMovieId.plot}</Text>
-        <Text>Duration: {props.movie.movieByMovieId.durationMinutes} minutes</Text>
-        <Text>Genres: {genreString}</Text>
+        <Text style={styles.title}>{props.movie.movieByMovieId.title}</Text>
+        <Text style={styles.releaseYear}>Release year: {props.movie.movieByMovieId.year}</Text>
+        <Text style={styles.plot}>{props.movie.movieByMovieId.plot}</Text>
+        <Text style={styles.duration}>Duration: {props.movie.movieByMovieId.durationMinutes} minutes</Text>
+        <Text style={styles.genres}>{'Genres:\n'}{genreString}</Text>
+        <Text style={styles.showtimes}>{'Showtimes:\nTime (Room)\n'}</Text>
         <MovieShowtimesInCinema />
-      </View>
+      </ScrollView>
     )
   }
 }
