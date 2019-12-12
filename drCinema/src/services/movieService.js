@@ -42,8 +42,7 @@ export const gettingMoviesByCinemaID = async cinemaID => {
             poster    : moveList[i]["poster"],
             year      : moveList[i]["year"],
             genres    : moveList[i]["genres"],
-          }
-
+          };
         validMovies.push(validMovie);
       }
     }

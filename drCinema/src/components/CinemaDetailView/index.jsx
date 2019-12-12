@@ -1,14 +1,15 @@
 import React from 'react';
-import {View, Text, Linking } from 'react-native';
+import { ScrollView, Text, Linking } from 'react-native';
 import { connect } from 'react-redux';
+import MoviesByCinemaList from '../MoviesByCinemaList';
 import styles from './styles';
 
 const CinemaDetailView = props => {
   if(typeof props.theater.theater === 'undefined'){
     return(
-      <View>
+      <ScrollView>
         <Text>Loading</Text>
-      </View>
+      </ScrollView>
     );
   }
   else{
@@ -28,7 +29,8 @@ const CinemaDetailView = props => {
     let fullAddress = props.theater.theater.address + ", " + props.theater.theater.city;
     let website = 'http://' + props.theater.theater.website.toString();
     return(
-      <View>
+      <ScrollView style={{ flex: 1 }}
+        scrollEnabled={true}>
         <Text style={styles.name}>{props.theater.theater.name}</Text>
         <Text style={styles.description}>{tmpDescription}</Text>
         <Text style={styles.address}>{fullAddress}</Text>
@@ -36,7 +38,8 @@ const CinemaDetailView = props => {
         <Text style={styles.website} onPress={() => {
           Linking.openURL(website);
         }}>{props.theater.theater.website}</Text>
-      </View>
+        <MoviesByCinemaList />
+      </ScrollView>
     );
   }
 }

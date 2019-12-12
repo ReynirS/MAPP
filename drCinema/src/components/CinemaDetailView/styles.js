@@ -1,6 +1,9 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
+  view: {
+    flex: 1,
+  },
   name: {
     fontSize: 30,
     fontWeight: 'bold',

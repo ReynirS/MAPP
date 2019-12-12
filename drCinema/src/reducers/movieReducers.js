@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-function getMoviesByCinemaId(state = [], action){
+function getMoviesByCinemaID(state = [], action){
   switch(action.type){
     case 'GET_MOVIES_BY_CINEMA_ID': return Object.assign({}, state, {
       moviesByCinemaId: action.payload,
@@ -10,7 +10,7 @@ function getMoviesByCinemaId(state = [], action){
 }
 
 const movieShit = combineReducers({
-  getMoviesByCinemaId,
+  getMoviesByCinemaID,
 })
 
 export default movieShit;
