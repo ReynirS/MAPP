@@ -1,22 +1,27 @@
 import React from 'react';
-import { View, Text, Image, FlatList } from 'react-native';
+import { View, Text, FlatList, Linking } from 'react-native';
 import { connect } from 'react-redux';
 import { gettingShowtimesByCinemaId } from '../../services/movieService';
+import styles from './style';
 
 const MovieShowtimesInCinema = props => {
 
   const showtimes = gettingShowtimesByCinemaId(props.movie.movieByMovieId, props.theaterId);
 
   return(
-    <View>
+    <View style={styles.view}>
       <FlatList
         numColumns={1}
         data={showtimes}
         renderItem={({item:{purchase_url, time}}) => {
           return(
             <View>
-              <Text>{purchase_url}</Text>
-              <Text>{time}</Text>
+              <Text style={styles.time}>{time}</Text>
+              <Text
+              style={styles.purchaseURL}
+              onPress={() => {
+                Linking.openURL(purchase_url);
+              }}>{purchase_url}</Text>
             </View>
           );
         }}
