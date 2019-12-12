@@ -18,7 +18,7 @@ const CinemaDetailView = props => {
       tmpDescription = "No description";
     }
     else{
-      tmpDescription = props.theater.theater.description;
+      tmpDescription = props.theater.theater.description.replace(/<[a-z]*>/g, '');
     }
     if(props.theater.theater.phone === null){
       phoneNumber = "No phonenumber";
