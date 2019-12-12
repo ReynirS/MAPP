@@ -4,12 +4,12 @@ import { ListItem, Avatar } from 'react-native-elements';
 import styles from './style';
 import { withNavigation } from 'react-navigation';
 
-const MoviesByCinemaThumbnail = ({ title, poster, year, genres}) => {
+const MoviesByCinemaThumbnail = ({ title, poster, year, genres, movieID, navigation: {navigate}}) => {
   let genreString = genres.map(m => m.Name + '\n').toString().split(',').join('');
   return(
     <TouchableOpacity
       activeOpacity={0.8}
-      onPress={() => {}}>
+      onPress={() => navigate('MovieDetail', {movieID})}>
       <View style={styles.view}>
         <ListItem
           style={styles.list}

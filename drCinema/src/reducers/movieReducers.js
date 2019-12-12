@@ -9,8 +9,18 @@ function getMoviesByCinemaID(state = [], action){
   }
 }
 
+function getMovieByMovieId(state = [], action){
+  switch(action.type){
+    case 'GET_MOVIE_BY_MOVIE_ID': return Object.assign({}, state, {
+      movieByMovieId: action.payload,
+    });
+    default: return state;
+  }
+}
+
 const movieShit = combineReducers({
   getMoviesByCinemaID,
+  getMovieByMovieId
 })
 
 export default movieShit;

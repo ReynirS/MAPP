@@ -23,7 +23,21 @@ export const gettingUpcomingMovies = async () => {
   return movies.data;
 }
 
-export const gettingMoviesByCinemaID = async cinemaID => {
+export const gettingMovieByMovieId = async (movieId) => {
+  const movies = await gettingAllMovies();
+  const movie = movies.find(mov => mov.id == movieId);
+  return movie;
+}
+
+export const gettingShowtimesByCinemaId = (movie, cinemaId) => {
+  for(var i = 0; i < movie.showtimes.length; i++){
+    if(movie.showtimes[i].cinema.id == cinemaId){
+      return movie.showtimes[i].schedule;
+    }
+  }
+}
+
+export const gettingMoviesByCinemaId = async cinemaId => {
   const moveList = await gettingAllMovies();
   const validMovies = [];
   // iterate through all movies
@@ -31,12 +45,12 @@ export const gettingMoviesByCinemaID = async cinemaID => {
     // iterate through all showtimes of current movie
     for (var j = 0; j < moveList[i]["showtimes"].length; j++) {
       // movies may have cineam id as object or number so we much check both
-      if (moveList[i]["showtimes"][j]["cinema"]["id"] == cinemaID ||
-          moveList[i]["showtimes"][j]["cinema"] == cinemaID) {
+      if (moveList[i]["showtimes"][j]["cinema"]["id"] == cinemaId ||
+          moveList[i]["showtimes"][j]["cinema"] == cinemaId) {
 
           // the required values for cineam details we must extract
           const validMovie =  {
-            cinemaID  : cinemaID,
+            cinemaID  : cinemaId,
             movieID   : moveList[i]["id"],
             title     : moveList[i]["title"],
             poster    : moveList[i]["poster"],

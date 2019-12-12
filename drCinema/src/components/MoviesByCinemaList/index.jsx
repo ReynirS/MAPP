@@ -18,13 +18,14 @@ const MoviesByCinemaList = props => {
         <FlatList
         numColumns={1}
         data={props.movies.moviesByCinemaId.sort((a, b) => (a.title > b.title) ? 1 : -1)}
-        renderItem={({item:{title, poster, year, genres}}) => {
+        renderItem={({item:{title, poster, year, genres, movieID}}) => {
           return(
             <MoviesByCinemaThumbnail
               title={title}
               poster={poster}
               year={year}
               genres={genres}
+              movieID={movieID}
               />
             // <Text>{title}</Text>
           );
