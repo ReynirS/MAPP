@@ -15,7 +15,7 @@ const gettingAllMovies = async () => {
 
 export const gettingUpcomingMovies = async () => {
   const token = await gettingToken();
-  const movies = await axios.get("http://api.kvikmyndir.is/movies", {
+  const movies = await axios.get("http://api.kvikmyndir.is/upcoming", {
     headers: {
       'x-access-token': token,
     },
