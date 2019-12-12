@@ -3,9 +3,8 @@ import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   view: {
     margin: 10,
-  },
-  leftAvatarStyle: {
-
+    marginTop: 5,
+    marginBottom: 5,
   },
   avatar: {
     width: 100,
