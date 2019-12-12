@@ -43,5 +43,8 @@ export default StyleSheet.create({
     margin: 10,
     marginTop: 0,
     marginBottom: 0,
+  },
+  spinnerView: {
+    margin: '10%'
   }
 });

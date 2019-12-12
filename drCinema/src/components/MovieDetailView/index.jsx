@@ -3,12 +3,13 @@ import {ScrollView, Text, Image} from 'react-native';
 import { connect } from 'react-redux';
 import MovieShowtimesInCinema from '../MovieShowtimesInCinema';
 import styles from './style';
+import Spinner from '../Spinner';
 
 const MovieDetailView = props => {
-  if(typeof props.movie.movieByMovieId === 'undefined'){
+  if(typeof props.movie.movieByMovieId === 'undefined' || props.loading === true){
     return (
-      <ScrollView>
-        <Text>Loading</Text>
+      <ScrollView style={styles.spinnerView}>
+        <Spinner />
       </ScrollView>
     );
   }
@@ -37,7 +38,8 @@ const MovieDetailView = props => {
 
 const mapStateToProps = reduxStoreState => {
   return {
-    movie: reduxStoreState.movies.getMovieByMovieId
+    movie: reduxStoreState.movies.getMovieByMovieId,
+    loading: reduxStoreState.movies.loadingMovieByMovieId.loading
   };
 }
 

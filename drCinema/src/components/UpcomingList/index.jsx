@@ -1,19 +1,19 @@
 import React from 'react';
-import { View, Text, FlatList, Image } from 'react-native';
+import { View, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import UpcomingThumbnail from '../UpcomingThumbnail';
 import styles from './styles';
+import Spinner from '../Spinner';
 
 const UpcomingList = props => {
   if(props.upcomingMovies.length === 0 || typeof props.upcomingMovies.upcomingMovies === 'undefined'){
     return (
-      <View>
-        <Text>Loading upcoming movies</Text>
+      <View style={styles.spinnerView}>
+        <Spinner />
       </View>
     );
   }
   else{
-    console.log(props.upcomingMovies.upcomingMovies);
     return(
       <View style={styles.view}>
         <FlatList
@@ -29,13 +29,6 @@ const UpcomingList = props => {
                 poster={poster}
                 dateStr={dateStr}
               />
-              // <View>
-              //   <Text>{title}</Text>
-              //   <Image
-              //   style={{height: 50, width: 50}}
-              //   source={{uri:poster}}/>
-              //   <Text>{dateStr}</Text>
-              //   </View>
               );
           }}
           keyExtractor={(movies) => movies.title} />

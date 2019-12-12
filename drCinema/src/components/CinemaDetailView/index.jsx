@@ -3,12 +3,13 @@ import { ScrollView, Text, Linking } from 'react-native';
 import { connect } from 'react-redux';
 import MoviesByCinemaList from '../MoviesByCinemaList';
 import styles from './styles';
+import Spinner from '../Spinner';
 
 const CinemaDetailView = props => {
-  if(typeof props.theater.theater === 'undefined'){
+  if(typeof props.theater.theater === 'undefined' || props.loading === true){
     return(
-      <ScrollView>
-        <Text>Loading</Text>
+      <ScrollView style={styles.spinnerView}>
+        <Spinner />
       </ScrollView>
     );
   }
@@ -29,7 +30,7 @@ const CinemaDetailView = props => {
     let fullAddress = props.theater.theater.address + ", " + props.theater.theater.city;
     let website = 'http://' + props.theater.theater.website.toString();
     return(
-      <ScrollView style={{ flex: 1 }}
+      <ScrollView style={styles.view}
         scrollEnabled={true}>
         <Text style={styles.name}>{props.theater.theater.name}</Text>
         <Text style={styles.description}>{tmpDescription}</Text>
@@ -46,7 +47,8 @@ const CinemaDetailView = props => {
 
 const mapStateToProps = reduxStoreState => {
   return {
-    theater: reduxStoreState.theaters.getCinemaById
+    theater: reduxStoreState.theaters.getCinemaById,
+    loading: reduxStoreState.theaters.cinemaIsLoading.loading
   };
 }
 

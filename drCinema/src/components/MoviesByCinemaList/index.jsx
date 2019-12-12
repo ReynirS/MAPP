@@ -3,12 +3,13 @@ import { View, Text, FlatList } from 'react-native';
 import { connect } from 'react-redux';
 import MoviesByCinemaThumbnail from '../MoviesByCinemaThumbnail';
 import styles from './style';
+import Spinner from '../Spinner';
 
 const MoviesByCinemaList = props => {
-  if(props.movies.length === 0 || props.movies.movies === 'undefined'){
+  if(props.movies.length === 0 || props.movies.movies === 'undefined' || props.loading === true){
     return(
-      <View>
-        <Text>Loading</Text>
+      <View style={styles.spinnerView}>
+        <Spinner />
       </View>
     );
   }
@@ -27,7 +28,6 @@ const MoviesByCinemaList = props => {
               genres={genres}
               movieID={movieID}
               />
-            // <Text>{title}</Text>
           );
         }}
         keyExtractor={ (movies) => movies.title } />
@@ -39,6 +39,7 @@ const MoviesByCinemaList = props => {
 const mapStateToProps = reduxStoreState => {
   return{
     movies: reduxStoreState.movies.getMoviesByCinemaID,
+    loading: reduxStoreState.movies.loadingMoviesByCinemaId.loading
   };
 }
 export default connect(mapStateToProps)(MoviesByCinemaList);
