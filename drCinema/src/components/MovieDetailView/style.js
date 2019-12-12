@@ -30,6 +30,7 @@ export default StyleSheet.create({
   },
   duration: {
     fontSize: 14,
+    fontWeight: 'bold',
     margin: 10,
     marginTop: 0,
   },
@@ -42,5 +43,6 @@ export default StyleSheet.create({
     fontWeight: 'bold',
     margin: 10,
     marginTop: 0,
+    marginBottom: 0,
   }
 });
