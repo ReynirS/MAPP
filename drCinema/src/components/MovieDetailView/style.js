@@ -8,8 +8,7 @@ export default StyleSheet.create({
   },
   image: {
     width: winWidth,
-    height: winWidth * 1.48,
-    // aspectRatio: 3/4,
+    aspectRatio: 686/1016, // Standard movie poster size in mm
     resizeMode: 'contain',
     margin: 'auto',
   },
