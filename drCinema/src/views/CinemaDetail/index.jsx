@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import { getCinemaById } from '../../actions/theaterActions';
-import {getMoviesByCinemaId} from '../../actions/movieActions';
+import {getMoviesByCinemaID} from '../../actions/movieActions';
 import { loadVariable } from '../../services/variableService';
 import CinemaDetailView from '../../components/CinemaDetailView';
 
@@ -27,7 +27,7 @@ class CinemaDetail extends React.Component {
   getMoviesByCinemaId(id){
     const {getMoviesByCinemaId} = this.props;
     if(!(id < 1)){
-      getMoviesByCinemaId(id);
+      getMoviesByCinemaID(id);
     }
   }
 
@@ -35,7 +35,7 @@ class CinemaDetail extends React.Component {
     this.getCinemaById(this.state.currentId);
     this.getMoviesByCinemaId(this.state.currentId);
     //EKKI SNERTA ÞESSI 2 FYRIR NEÐAN
-  //  this.getMoviesByCinemaId(this.state.currentId);
+  //  this.getMoviesByCinemaID(this.state.currentId);
     //console.log(this.props.movies);
     return(
       <View style={{ flex: 1} }>

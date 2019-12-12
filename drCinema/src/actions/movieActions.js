@@ -1,6 +1,6 @@
 import { gettingMoviesByCinemaID } from '../services/movieService';
 
-export const getMoviesByCinemaId = cinemaId => {
+export const getMoviesByCinemaID = cinemaId => {
   return async dispatch => {
     try{
       const movies = await gettingMoviesByCinemaID(cinemaId);

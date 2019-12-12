@@ -9,7 +9,17 @@ const gettingAllMovies = async () => {
       'x-access-token': token,
     },
   })
-  // console.log(movies.data);
+  return movies.data;
+}
+
+
+export const gettingUpcomingMovies = async () => {
+  const token = await gettingToken();
+  const movies = await axios.get("http://api.kvikmyndir.is/movies", {
+    headers: {
+      'x-access-token': token,
+    },
+  })
   return movies.data;
 }
 
