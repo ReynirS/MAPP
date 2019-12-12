@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, FlatList, Image } from 'react-native';
 import { connect } from 'react-redux';
-// import UpcomingThumbnail from '../UpcomingThumbnail';
+import UpcomingThumbnail from '../UpcomingThumbnail';
 import styles from './styles';
 
 const UpcomingList = props => {
@@ -15,7 +15,7 @@ const UpcomingList = props => {
   else{
     console.log(props.upcomingMovies.upcomingMovies);
     return(
-      <View>
+      <View style={styles.view}>
         <FlatList
           numColumns={1}
           data={props.upcomingMovies.upcomingMovies.sort((a, b) => (a.name > b.name) ? 1 : -1)}
@@ -24,13 +24,18 @@ const UpcomingList = props => {
             let dateArr = date.split(' ');
             let dateStr = 'Release date: ' + dateArr[2] + '. ' + dateArr[1] + ' ' + dateArr[3];
             return (
-              <View>
-                <Text>{title}</Text>
-                <Image
-                style={{height: 50, width: 50}}
-                source={{uri:poster}}/>
-                <Text>{dateStr}</Text>
-                </View>
+              <UpcomingThumbnail
+                title={title}
+                poster={poster}
+                dateStr={dateStr}
+              />
+              // <View>
+              //   <Text>{title}</Text>
+              //   <Image
+              //   style={{height: 50, width: 50}}
+              //   source={{uri:poster}}/>
+              //   <Text>{dateStr}</Text>
+              //   </View>
               );
           }}
           keyExtractor={(movies) => movies.title} />
