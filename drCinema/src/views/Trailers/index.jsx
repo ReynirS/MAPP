@@ -29,6 +29,7 @@ class Trailers extends React.Component {
           <WebView
             source={ { uri: source } }
             style={ styles.webViewStyle }
+            useWebKit={true}
           />
         </View>
       );

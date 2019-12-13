@@ -12,4 +12,9 @@ export default StyleSheet.create({
   webViewStyle:{
     marginTop: 20,
   },
+  text: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    marginBottom: 20
+  }
 });
