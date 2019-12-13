@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StatusBar, WebView, Text } from 'react-native';
 import { loadVariable } from '../../services/variableService';
 import { FontAwesome } from '@expo/vector-icons';
-import styles from './style';
+import styles from './styles';
 
 class Trailers extends React.Component {
   state = {
@@ -18,7 +18,7 @@ class Trailers extends React.Component {
   render(){
     // We make two checks to accommodate for API inconsistencies
     if(this.state.trailers.length == 0 || this.state.trailers[0]["results"].length == 0) {
-      return (<View style={styles.view}><Text style={styles.text}>No trailers for this movie</Text><FontAwesome name="frown-o" size={40} /></View>);
+      return (<View style={styles.noTrailerView}><Text style={styles.text}>No trailers for this movie</Text><FontAwesome name="frown-o" size={40} /></View>);
     }
     else {
       const source = this.state.trailers[0]["results"][0]["url"];
