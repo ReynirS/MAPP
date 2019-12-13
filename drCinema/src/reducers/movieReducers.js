@@ -36,11 +36,11 @@ function loadingMovieByMovieId(state = false, action){
   }
 }
 
-const movieShit = combineReducers({
+const movieReducers = combineReducers({
   getMoviesByCinemaID,
   getMovieByMovieId,
   loadingMoviesByCinemaId,
   loadingMovieByMovieId
 })
 
-export default movieShit;
+export default movieReducers;

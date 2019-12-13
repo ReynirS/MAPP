@@ -1,9 +1,9 @@
 import React from 'react';
 import { ScrollView, Text, Linking } from 'react-native';
-import { connect } from 'react-redux';
 import MoviesByCinemaList from '../MoviesByCinemaList';
-import styles from './styles';
 import Spinner from '../Spinner';
+import { connect } from 'react-redux';
+import styles from './styles';
 
 const CinemaDetailView = props => {
   if(typeof props.theater.theater === 'undefined' || props.loading === true){
@@ -32,13 +32,13 @@ const CinemaDetailView = props => {
     return(
       <ScrollView style={styles.view}
         scrollEnabled={true}>
-        <Text style={styles.name}>{props.theater.theater.name}</Text>
-        <Text style={styles.description}>{tmpDescription}</Text>
-        <Text style={styles.address}>{fullAddress}</Text>
-        <Text style={styles.phoneNumber}>{phoneNumber}</Text>
-        <Text style={styles.website} onPress={() => {
+        <Text style={ styles.name }>{ props.theater.theater.name }</Text>
+        <Text style={ styles.description }>{ tmpDescription }</Text>
+        <Text style={ styles.address }>{ fullAddress }</Text>
+        <Text style={ styles.phoneNumber }>{ phoneNumber }</Text>
+        <Text style={ styles.website } onPress={() => {
           Linking.openURL(website);
-        }}>{props.theater.theater.website}</Text>
+        }}>{ props.theater.theater.website }</Text>
         <MoviesByCinemaList />
       </ScrollView>
     );

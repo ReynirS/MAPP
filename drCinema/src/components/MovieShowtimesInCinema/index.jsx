@@ -9,23 +9,23 @@ const MovieShowtimesInCinema = props => {
   const showtimes = gettingShowtimesByCinemaId(props.movie.movieByMovieId, props.theaterId);
 
   return(
-    <View style={styles.view}>
+    <View style={ styles.view }>
       <FlatList
-        numColumns={1}
-        data={showtimes}
-        renderItem={({item:{purchase_url, time}}) => {
+        numColumns={ 1 }
+        data={ showtimes }
+        renderItem={ ({item:{purchase_url, time}}) => {
           return(
             <View>
-              <Text style={styles.time}>{time}</Text>
+              <Text style={ styles.time }>{ time }</Text>
               <Text
-              style={styles.purchaseURL}
-              onPress={() => {
+              style={ styles.purchaseURL }
+              onPress={ () => {
                 Linking.openURL(purchase_url);
-              }}>{purchase_url}</Text>
+              } }>{ purchase_url }</Text>
             </View>
           );
-        }}
-        keyExtractor= {(showtime) => showtime.purchase_url } />
+        } }
+        keyExtractor= { (showtime) => showtime.purchase_url } />
     </View>
   );
 }

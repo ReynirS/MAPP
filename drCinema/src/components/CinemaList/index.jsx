@@ -1,15 +1,15 @@
 import React from 'react';
 import {View, FlatList } from 'react-native';
-import { connect } from 'react-redux';
 import CinemaThumbnail from '../CinemaThumbnail';
-import styles from './styles'
 import Spinner from '../Spinner';
+import { connect } from 'react-redux';
+import styles from './styles';
 
 
 const CinemaList = props => {
   if(props.theaters.length === 0 ||typeof props.theaters.theaters === 'undefined'){
     return(
-      <View style={styles.spinnerView}>
+      <View style={ styles.spinnerView }>
         <Spinner />
       </View>
     );
@@ -17,20 +17,20 @@ const CinemaList = props => {
   else{
 
     return (
-      <View style={styles.view}>
+      <View style={ styles.view }>
         <FlatList
-        numColumns={1}
+        numColumns={ 1 }
         data={props.theaters.theaters.sort((a, b) => (a.name > b.name) ? 1 : -1)}
-        renderItem={({item:{name, website, id}}) => {
+        renderItem={ ({item:{name, website, id}}) => {
           return (
             <CinemaThumbnail
-              name={name}
-              website={website}
-              id={id}
+              name={ name }
+              website={ website }
+              id={ id }
               />
           );
         }}
-        keyExtractor={ (theaters) => theaters.id.toString()} />
+        keyExtractor={ (theaters) => theaters.id.toString() } />
       </View>
     );
   }

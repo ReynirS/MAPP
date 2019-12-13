@@ -8,7 +8,7 @@ export const getMoviesByCinemaId = cinemaId => {
       dispatch(getMoviesByCinemaIdSuccess(movies));
       dispatch(loadingMoviesByCinemaId(false));
     } catch(err){
-      console.log("ERRROR BITCH" + err);
+      console.log("ERROR IN GETMOVIESBYCINEMAID() IN MOVIEACTIONS " + err);
     }
   };
 }
@@ -21,7 +21,7 @@ export const getMovieByMovieId = movieId => {
       dispatch(getMovieByMovieIdSuccess(movie));
       dispatch(loadingMovieByMovieId(false));
     } catch(err){
-      console.log("Error gettin movie by movie id: "+ err);
+      console.log("ERROR IN GETMOVIEBYMOVIEID() IN MOVIEACTIONS"+ err);
     }
   };
 }

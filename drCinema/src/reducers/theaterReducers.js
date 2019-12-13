@@ -26,10 +26,10 @@ function cinemaIsLoading(state = false, action){
     default: return state;
   }
 }
-const theaterShit = combineReducers({
+const theaterReducers = combineReducers({
   getAllTheaters,
   getCinemaById,
   cinemaIsLoading,
 })
 
-export default theaterShit;
+export default theaterReducers;

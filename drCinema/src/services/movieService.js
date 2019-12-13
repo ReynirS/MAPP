@@ -1,10 +1,11 @@
 import {gettingToken } from './tokenService';
 const axios = require('axios');
-const ENDPOINT = 'http://api.kvikmyndir.is/movies';
+const MOVIES_ENDPOINT = 'http://api.kvikmyndir.is/movies';
+const UPCOMING_ENDPOINT = 'http://api.kvikmyndir.is/upcoming';
 
 const gettingAllMovies = async () => {
   const token = await gettingToken();
-  const movies = await axios.get(ENDPOINT, {
+  const movies = await axios.get(MOVIES_ENDPOINT, {
     headers: {
       'x-access-token': token,
     },
@@ -15,7 +16,7 @@ const gettingAllMovies = async () => {
 
 export const gettingUpcomingMovies = async () => {
   const token = await gettingToken();
-  const movies = await axios.get("http://api.kvikmyndir.is/upcoming", {
+  const movies = await axios.get(UPCOMING_ENDPOINT, {
     headers: {
       'x-access-token': token,
     },
