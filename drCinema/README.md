@@ -50,3 +50,4 @@ Unspecified Bonus Features:
 	To streamline the use case of a user wanting more information on a theater, all theaters are displayed with a clickable link which directs to a webpage where the user may read additional information on a theater
 	drCinema provides a more fault tolerant interpretation of http://api.kvikmyndir.is/. Case in point, the app can display Paw Patrol, despite inconsistencies in JSON response
 	drCinema will update data during runtime to provide the user with time sensitive information
+	To remove the unnecessary HTML tags in the movie descriptions before displaying it.
