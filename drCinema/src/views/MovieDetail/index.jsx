@@ -1,9 +1,10 @@
 import React from 'react';
 import { View, Text, StatusBar } from 'react-native';
+import MovieDetailView from '../../components/MovieDetailView';
 import { loadVariable } from '../../services/variableService';
 import { getMovieByMovieId } from '../../actions/movieActions';
 import { connect } from 'react-redux';
-import MovieDetailView from '../../components/MovieDetailView';
+import styles from './styles';
 
 class MovieDetail extends React.Component {
   state= {
@@ -11,9 +12,9 @@ class MovieDetail extends React.Component {
   }
 
   async componentDidMount(){
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     const currentMovieId = await loadVariable(navigation.getParam('movieID', 0));
-    this.setState({currentMovieId});
+    this.setState({ currentMovieId });
     this.getMovieByMovieId(this.state.currentMovieId);
   }
 
@@ -26,7 +27,7 @@ class MovieDetail extends React.Component {
 
   render(){
     return(
-      <View style={{ flex: 1} }>
+      <View style={ styles.view }>
         <StatusBar barStyle='light-content' />
         <MovieDetailView />
       </View>
@@ -35,4 +36,4 @@ class MovieDetail extends React.Component {
 }
 
 
-export default connect(null, {getMovieByMovieId})(MovieDetail);
+export default connect(null, { getMovieByMovieId })(MovieDetail);

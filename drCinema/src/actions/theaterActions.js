@@ -6,7 +6,7 @@ export const getTheaters = () => {
       const theaters = await gettingTheaters();
       dispatch(getTheatersSuccess(theaters));
     } catch(err) {
-      console.log("ERRROR: SOMETHING FUCKED UP");
+      console.log("ERROR IN GETTHEATERS() IN THEATERACTIONS: "+ err);
     }
   };
 }
@@ -19,7 +19,7 @@ export const getCinemaById = id => {
       dispatch(getCinemaByIdSuccess(theater));
       dispatch(loadingCinemaById(false));
     } catch(err) {
-      console.log("ERRROR: SOMETHING FUCKED UP");
+      console.log("ERROR IN GETCINEMABYID() IN THEATERACTIONS: "+ err);
     }
   };
 }

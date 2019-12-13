@@ -6,7 +6,7 @@ export const getUpcomingMovies = () => {
       const upcomingMovies = await gettingUpcomingMovies();
       dispatch(getUpcomingMoviesSuccess(upcomingMovies));
     } catch(err){
-      console.log("ERROR MUTHAFUKKA" + err);
+      console.log("ERROR IN GETUPCOMINGMOVIES() IN UPCOMINGACTIONS: " + err);
     }
   };
 }

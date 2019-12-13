@@ -10,9 +10,9 @@ class Trailers extends React.Component {
   }
 
   async componentDidMount(){
-    const {navigation } = this.props;
+    const { navigation } = this.props;
     const trailers = await loadVariable(navigation.getParam('trailers', []));
-    this.setState({trailers});
+    this.setState({ trailers });
   }
 
   render(){
@@ -24,11 +24,11 @@ class Trailers extends React.Component {
       const source = this.state.trailers[0]["results"][0]["url"];
 
       return(
-        <View style={{ flex: 1} }>
+        <View style={ styles.view }>
           <StatusBar barStyle='light-content' />
           <WebView
-            source={{uri: source}}
-            style={{marginTop: 20}}
+            source={ { uri: source } }
+            style={ styles.webViewStyle }
           />
         </View>
       );

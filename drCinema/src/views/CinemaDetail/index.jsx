@@ -1,31 +1,31 @@
 import React from 'react';
 import { View, Text, StatusBar } from 'react-native';
+import CinemaDetailView from '../../components/CinemaDetailView';
 import { connect } from 'react-redux';
 import { getCinemaById } from '../../actions/theaterActions';
-import {getMoviesByCinemaId} from '../../actions/movieActions';
+import { getMoviesByCinemaId } from '../../actions/movieActions';
 import { loadVariable } from '../../services/variableService';
-import CinemaDetailView from '../../components/CinemaDetailView';
-
+import styles from './styles';
 class CinemaDetail extends React.Component {
   state = {
     currentId: 0
   }
 
   async componentDidMount(){
-    const {navigation, getCinemaById} = this.props;
+    const { navigation, getCinemaById } = this.props;
     const currentId = await loadVariable(navigation.getParam('id', 0));
-    this.setState({currentId});
+    this.setState({ currentId });
   }
 
   getCinemaById(id){
-    const {getCinemaById} = this.props;
+    const { getCinemaById } = this.props;
     if(!(id < 1)){
       getCinemaById(id);
     }
   }
 
   getMoviesByCinemaId(id){
-    const {getMoviesByCinemaId} = this.props;
+    const { getMoviesByCinemaId } = this.props;
     if(!(id < 1)){
       getMoviesByCinemaId(id);
     }
@@ -35,7 +35,7 @@ class CinemaDetail extends React.Component {
     this.getCinemaById(this.state.currentId);
     this.getMoviesByCinemaId(this.state.currentId);
     return(
-      <View style={{ flex: 1} }>
+      <View style={ styles.view }>
         <StatusBar barStyle='light-content' />
         <CinemaDetailView />
       </View>
