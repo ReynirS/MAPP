@@ -8,6 +8,7 @@ import Cinemas from '../views/Cinemas';
 import CinemaDetail from '../views/CinemaDetail';
 import MovieDetail from '../views/MovieDetail';
 import Upcoming from '../views/Upcoming';
+import Trailers from '../views/Trailers';
 
 const CinemasStack = createStackNavigator(
   {
@@ -50,6 +51,16 @@ const UpcomingStack = createStackNavigator(
       screen: Upcoming,
       navigationOptions: {
         title: 'Upcoming Movies',
+        headerTintColor: 'white',
+        headerStyle: {
+          backgroundColor: '#615D6C'
+        }
+      }
+    },
+    Trailers: {
+      screen: Trailers,
+      navigationOptions: {
+        title: 'Upcoming Trailers',
         headerTintColor: 'white',
         headerStyle: {
           backgroundColor: '#615D6C'

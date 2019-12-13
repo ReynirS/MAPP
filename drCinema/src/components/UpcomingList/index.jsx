@@ -17,9 +17,10 @@ const UpcomingList = props => {
       <View style={styles.view}>
         <FlatList
           numColumns={1}
-          // sort movies by release date  
+          // sort movies by release date
           data={props.upcomingMovies.upcomingMovies.sort((a, b) => (a["release-dateIS"] > b["release-dateIS"]) ? 1 : -1)}
-          renderItem={({item:{"title":title, "poster":poster, "release-dateIS": release}}) => {
+          renderItem={({item:{"title":title, "poster":poster, "release-dateIS": release, "trailers": trailers}}) => {
+
             let date = new Date(release).toString();
             let dateArr = date.split(' ');
             let dateStr = 'Release date: ' + dateArr[2] + '. ' + dateArr[1] + ' ' + dateArr[3];
@@ -28,7 +29,9 @@ const UpcomingList = props => {
                 title={title}
                 poster={poster}
                 dateStr={dateStr}
+                trailers={trailers}
               />
+
               // <View>
               //   <Text>{title}</Text>
               //   <Image
