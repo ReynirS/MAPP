@@ -4,10 +4,10 @@ import styles from './style';
 import { ListItem, Avatar } from 'react-native-elements';
 import { withNavigation} from 'react-navigation';
 
-const UpcomingThumbnail = ({title, poster, dateStr}) => (
+const UpcomingThumbnail = ({title, poster, dateStr, trailers, navigation: {navigate}}) => (
   <TouchableOpacity
     activeOpacity={0.8}
-    onPress={() => {}}>
+    onPress={() => navigate('Trailers', {trailers})}>
     <View style={styles.view}>
       <ListItem
         style={styles.list}
