@@ -6,6 +6,7 @@ import { withNavigation } from 'react-navigation';
 
 const MoviesByCinemaThumbnail = ({ title, poster, year, genres, movieID, navigation: {navigate}}) => {
   let genreString = genres.map(m => m.Name + '\n').toString().split(',').join('');
+  let subGenreString = genreString.substring(0, genreString.length -1);
   return(
     <TouchableOpacity
       activeOpacity={0.8}
@@ -23,7 +24,7 @@ const MoviesByCinemaThumbnail = ({ title, poster, year, genres, movieID, navigat
           titleStyle={styles.titleStyle}
           subtitle={year}
           subtitleStyle={styles.subtitleStyle}
-          rightSubtitle={genreString}
+          rightSubtitle={subGenreString}
           rightSubtitleStyle={styles.rightSubtitleStyle}
           bottomDivider
         />

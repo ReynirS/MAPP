@@ -27,7 +27,7 @@ const CinemaDetailView = props => {
     else{
       phoneNumber = props.theater.theater.phone;
     }
-    let fullAddress = props.theater.theater.address + ", " + props.theater.theater.city;
+    let fullAddress = props.theater.theater["address\t"] + ", " + props.theater.theater.city;
     let website = 'http://' + props.theater.theater.website.toString();
     return(
       <ScrollView style={styles.view}
