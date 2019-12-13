@@ -31,4 +31,7 @@ export default StyleSheet.create({
     fontSize: 20,
     color: 'blue',
   },
+  spinnerView: {
+    margin: '10%'
+  }
 });
