@@ -14,6 +14,11 @@ export default StyleSheet.create({
     margin: 10,
     marginTop: 0,
     fontSize: 14,
+    borderWidth: 1,
+    borderColor: '#e3e3e3',
+    borderRadius: 5,
+    padding: 4,
+    backgroundColor: '#e3e3e3',
   },
   address: {
     margin: 10,
